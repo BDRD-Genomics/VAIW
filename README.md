@@ -2,7 +2,9 @@
 
 #### Parts of this workflow were adapted from [Utah DoH ARTIC/Illumina Bioinformatic Workflow](https://github.com/CDCgov/SARS-CoV-2_Sequencing/tree/master/protocols/BFX-UT_ARTIC_Illumina) workflow and the [ARTIC workflow](https://artic.network/ncov-2019/ncov2019-bioinformatics-sop.html)
 
-#### The code is available on GitHub [BDRD-Genomics/VAIW](https://github.com/BDRD-Genomics/VAIW) and the docker container is available on DockerHub [bdrdgenomics/viral_amplicon_illumina_workflow](https://hub.docker.com/repository/docker/bdrdgenomics/viral_amplicon_illumina_workflow)
+#### The code is available on GitHub [BDRD-Genomics/VAIW](https://github.com/BDRD-Genomics/VAIW) 
+
+### The docker container is available on DockerHub [bdrdgenomics/viral_amplicon_illumina_workflow](https://hub.docker.com/repository/docker/bdrdgenomics/viral_amplicon_illumina_workflow)
 
 # Summary of workflows:
 1. Read QC with bbduk
