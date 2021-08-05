@@ -1,10 +1,10 @@
-#### This is a workflow to analyze viral genomes prepared with an amplicon based library protocol and sequenced on the Illumina platform. This currently supports [ARTIC](https://artic.network/ncov-2019) (v3) and [YouSeq](https://youseq.com) (v2) amplicon protocols.
+#### This is a workflow to analyze viral genomes prepared with an amplicon based library protocol and sequenced on the Illumina platform. This currently supports [ARTIC](https://artic.network/ncov-2019) (v3 and v4), [QIASeq DIRECT](https://www.qiagen.com/us/products/next-generation-sequencing/rna-sequencing/qiaseq-direct-sars-cov-2-kits/), and  [YouSeq](https://youseq.com) (v2) amplicon protocols.
 
 #### Parts of this workflow were adapted from [Utah DoH ARTIC/Illumina Bioinformatic Workflow](https://github.com/CDCgov/SARS-CoV-2_Sequencing/tree/master/protocols/BFX-UT_ARTIC_Illumina) workflow and the [ARTIC workflow](https://artic.network/ncov-2019/ncov2019-bioinformatics-sop.html)
 
 #### The code is available on GitHub [BDRD-Genomics/VAIW](https://github.com/BDRD-Genomics/VAIW) 
 
-### The docker container is available on DockerHub [bdrdgenomics/viral_amplicon_illumina_workflow](https://hub.docker.com/repository/docker/bdrdgenomics/viral_amplicon_illumina_workflow)
+### The docker container is available on DockerHub [bdrdgenomics/viral_amplicon_illumina_workflow](https://hub.docker.com/r/bdrdgenomics/viral_amplicon_illumina_workflow)
 
 # Summary of workflows:
 1. Read QC with bbduk
@@ -44,7 +44,7 @@ Samples are expected to be paired data with name format:
 
 **Note the "_" between sample and R1.fastq.gz and R2.fastq.gz**
 
-### Set the protocol type (ARTIC or YouSeq)
+### Set the protocol type (ARTICv4, ARTIC, QIAseq_DIRECT, or YouSeq)
 ```
 protocol=<protocol>
 ```

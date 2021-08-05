@@ -1,6 +1,7 @@
-# Updated February 23, 2021 by Logan Voegtly
+# Updated May 25, 2021 by Logan Voegtly
 # Now the default script for generating summary stats for SE and PE read sets
 # Fixed incorrect reporting of which CDS region the low coverage occurs
+# Recalculated
 
 import sys
 import re
@@ -64,19 +65,24 @@ else:
 if path.exists(consensus_file) == True:
 	output = os.popen('grep "Main genome contig sequence total:" ' + consensus_file).read()
 	consensus_length = output.split("\t")[1].split(" ")[0].strip()
+	# LJV updated to include a count of Ns in the sequence
+	output = os.popen('grep "Main genome scaffold sequence total:" ' + consensus_file).read()
+	scaffold_length = int(output.split("\t")[1].split(" ")[0].strip())
+	number_of_ns = str(scaffold_length - int(consensus_length))
+
 else:
 	consensus_length = str(0)
 
 
 #read covstats file for average coverage
-if path.exists(covstats_file) == True:
-	for line in open(covstats_file):
-		if line.startswith("#ID"):
-			continue
-		else:
-			avg_cov = line.split("\t")[1]
-else:
-	avg_cov = str(0)
+# if path.exists(covstats_file) == True:
+# 	for line in open(covstats_file):
+# 		if line.startswith("#ID"):
+# 			continue
+# 		else:
+# 			avg_cov = line.split("\t")[1]
+# else:
+# 	avg_cov = str(0)
 
 #this section collects minimum coverage areas
 #collect primer regions from bed file
@@ -100,8 +106,9 @@ if path.exists(vcf_file) == True:
 		position = int(line.split("\t")[1])
 		position_cov =  int(line.split("\t")[3])
 		#mpileup writes deletions as "*", so these will be subtracted from the coverage count
-		del_count = int(line.split("\t")[4].count('*'))
-		position_cov = position_cov - del_count
+		# LJV removed due to real deletions being called 0 coverage
+# 		del_count = int(line.split("\t")[4].count('*'))
+# 		position_cov = position_cov - del_count
 		pos_and_pos_cov = [position, position_cov]
 		vcf_collection.append(pos_and_pos_cov)
 else:
@@ -267,10 +274,10 @@ for element in min_cov_list:
 #get rid of last comma and space
 full_line = full_line[:-2]
 
-#read snv file file snv and nonsynonymous snv count
+#read snv file file snv and synonymous snv count
 snv_count = 0
 snv_line_count = 0
-nonsynon_count = 0
+synon_count = 0
 if path.exists(snv_file) == True:
 	for line in open(snv_file):
 		snv_line_count += 1
@@ -281,11 +288,22 @@ if path.exists(snv_file) == True:
 			ref_aa = line.split("\t")[17]
 			alt_aa = line.split("\t")[19].strip()
 			if ref_aa != alt_aa:
-				nonsynon_count +=1
+				synon_count +=1
 else:
 	snv_count = str(0)
-	nonsynon_count = str(0)
+	synon_count = str(0)
 
+# New calculation of average coverage
+if avg_insert_size == "N/A":
+	read_length = float(trimmed_avg_read_length)
+else:
+	read_length = float(avg_insert_size)
+# No dividing by zero
+if consensus_length == '0':
+	avg_cov = '0'
+else:
+	# Calculate average coverage and only print 2 decimal points
+	avg_cov = '%.2f' % ((read_length * int(reads_mapped))/int(consensus_length))
 
-print("SAMPLE NAME\tNUMBER OF RAW READS\tAVERAGE RAW READ LENGTH\tNUMBER OF TRIMMED READS\tAVERAGE TRIMMED READ LENGTH\tNUMBER OF JOINED READS\tAVERAGE INSERT SIZE\tNUMBER OF READS MAPPED\tPERCENTAGE OF READS MAPPED\tCONSENSUS LENGTH\tAVERAGE COVERAGE\tMINIMUM COVERAGE OUTSIDE OF ENDS\tMINIMUM COVERAGE POSITIONS\tTOTAL NUMBER OF SNV\tTOTAL NUMBER OF NONSYNONYMOUS SNVS")
-print(sample + "\t" + reads + "\t" + avg_read_length + "\t" + trimmed_reads + "\t" + trimmed_avg_read_length + "\t" + joined_reads + "\t" + avg_insert_size + "\t" + reads_mapped + "\t" + percentage_reads_mapped + "\t" + consensus_length + "\t" + avg_cov + "\t" + str(first_low[1]) + "\t" + full_line + "\t" + str(snv_count) + "\t" + str(nonsynon_count))
+print("SAMPLE NAME\tNUMBER OF RAW READS\tAVERAGE RAW READ LENGTH\tNUMBER OF TRIMMED READS\tAVERAGE TRIMMED READ LENGTH\tNUMBER OF JOINED READS\tAVERAGE INSERT SIZE\tNUMBER OF JOINED READS MAPPED\tPERCENTAGE OF JOINED READS MAPPED\tCONSENSUS LENGTH\tAVERAGE COVERAGE\tMINIMUM COVERAGE OUTSIDE OF ENDS\tMINIMUM COVERAGE POSITIONS\tTOTAL NUMBER OF SNV\tTOTAL NUMBER OF NON-SYNONYMOUS SNVS\tNUMBER OF Ns IN CONSENSUS")
+print(sample + "\t" + reads + "\t" + avg_read_length + "\t" + trimmed_reads + "\t" + trimmed_avg_read_length + "\t" + joined_reads + "\t" + avg_insert_size + "\t" + reads_mapped + "\t" + percentage_reads_mapped + "\t" + consensus_length + "\t" + str(avg_cov) + "\t" + str(first_low[1]) + "\t" + full_line + "\t" + str(snv_count) + "\t" + str(synon_count)+ "\t" + number_of_ns)

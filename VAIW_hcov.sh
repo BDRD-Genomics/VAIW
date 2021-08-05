@@ -1,8 +1,11 @@
 #!/bin/bash
 umask 0002
 ## Authors: Logan Voegtly <logan.j.voegtly.ctr@mail.mil> & Kyle Long <kyle.a.long8.ctr@mail.mil> & Gregory Rice <gregory.k.rice.ctr@mail.mil> & Katie Arnold <catherine.e.arnold13.civ@mail.mil>
-## Last modified:February 23, 2021
-version=1.0.1
+## Last modified: August 5, 2021
+version=1.3.0
+## Update: 1.3.0 Includes support for ARTICv4 primer scheme
+## Update: 1.2.0 Update how coverage is calculated for summary stats and optimize parameters; incorporate nomerge
+## Update: 1.1.0 Add support for QIAseq DIRECT primers
 ## Update: 1.0.1 Bugfixes: add umask; cd to directory before checking for files; add touch file to indicate analysis is done
 ## Update: 1.0.0 Consolidated scripts for easier updating in the future; consolidate to use a single parser for summary stats; Option to not run align_trim for probes or shotgun data
 
@@ -12,6 +15,8 @@ threads=$2
 protocol=$3
 # Only do R1 analysis; SE=Single end PE=paired end
 end_type=$4
+# Skips the merging data step
+nomerge=$5
 
 cd /mnt/data/
 
@@ -27,13 +32,22 @@ USAGE: docker run -v /path/to/data:/mnt/data/ bdrdgenomics/viral_amplicon_illumi
 \tSamples are expected to be paired data with name format <sample name>_R1.fastq.gz <sample name>_R2.fastq.gz\n
 "
 
-# If protocol contains ARTIC
-if [[ $protocol == *ARTIC* ]]; then
+# ARTIC V4 primers
+if [[ $protocol == *ARTICv4* ]]; then
+	reference_dir=/usr/local/bin/artic-ncov2019/primer_schemes/nCoV-2019/V4
+	reference="$reference_dir"/SARS-CoV-2.reference.fasta
+	primer_bed="$reference_dir"/SARS-CoV-2.scheme.bed
+	reference_gff="$reference_dir"/MN908947.gff3
+	reference_acc=MN908947_3
+	min_length=80
+# ARTIC V3 primers
+elif [[ $protocol == *ARTIC* ]]; then
 	reference_dir=/usr/local/bin/artic-ncov2019/primer_schemes/nCoV-2019/V3
 	reference="$reference_dir"/nCoV-2019.reference.fasta
 	primer_bed="$reference_dir"/nCoV-2019.bed
 	reference_gff="$reference_dir"/MN908947.gff3
 	reference_acc=MN908947_3
+	min_length=80
 # If protocol contains YouSeq
 # NOTE: This has been updated to use the same reference accession number for ARTIC and YouSeq
 elif [[ $protocol == *YouSeq* ]]; then
@@ -42,6 +56,15 @@ elif [[ $protocol == *YouSeq* ]]; then
 	primer_bed="$reference_dir"/youseq_covid-19_primers_bed_NC_045512_v2.0.bed
 	reference_gff="$reference_dir"/MN908947.3.gff3
 	reference_acc=MN908947_3
+	min_length=80
+elif [[ $protocol == *QIAseq* ]]; then
+	reference_dir=/usr/local/bin/hCoV_QIAseq/
+	reference="$reference_dir"/MN908947.3.fasta
+	primer_bed="$reference_dir"/QIAseqDIRECTSARSCoV2primersfinal_edited.bed
+	reference_gff="$reference_dir"/MN908947.3.gff3
+	reference_acc=MN908947_3
+	min_length=80
+	max_indel=300
 # Probe based data or shotgun data (will not run align_trim)
 elif [[ $protocol == *probes* || $protocol == *shotgun* ]]; then
 	reference_dir=/usr/local/bin/hCoV_YouSeq/
@@ -49,6 +72,7 @@ elif [[ $protocol == *probes* || $protocol == *shotgun* ]]; then
 	primer_bed="null"
 	reference_gff="$reference_dir"/MN908947.3.gff3
 	reference_acc=MN908947_3
+	min_length=50
 else
 	echo "<protocol> $protocol is not ARTIC or YouSeq"
 	echo -e $USAGE
@@ -114,7 +138,9 @@ fi
 if ! [[ "$max_indel" =~ ^[0-9]+$ ]]; then
     max_indel=500
 fi
-
+if ! [[ "$min_length" =~ ^[0-9]+$ ]]; then
+    min_length=50
+fi
 
 echo VAIW_hcov.sh $version > $log
 echo Start processing $sample >> $log
@@ -127,24 +153,27 @@ suffix="_trimmed"
 bbduk_stats="$sample""$suffix"_bbduk.stats.txt
 # If paired end run bbduk and bbmerge
 if [ $end_type == "PE" ]; then
-	bbduk.sh in1=$read1 in2=$read2 out1="$trim_read1" out2="$trim_read2" minlength=50 trimpolya=15 qtrim=r trimq=20 maq=20 ow 1>>$log 2> $bbduk_stats
+	bbduk.sh in1=$read1 in2=$read2 out1="$trim_read1" out2="$trim_read2" minlength=$min_length trimpolya=15 qtrim=r trimq=20 maq=20 ow 1>>$log 2> $bbduk_stats
 	if ! [[ -f $trim_read1 && -f $trim_read2 ]]; then
 		echo "Error: Trimmed read files $trim_read1 and $trim_read2 do not exist." >> $log
 		exit 2
 	fi
 
-	# Run BBmerge
-	echo Running bbmerge.sh on $sample >> $log
-	echo Running bbmerge.sh on $sample
-	suffix="$suffix"_merged
-	bbmerge_stats="$sample""$suffix"_bbmerge.stats.txt
-	bbmap_covstats="$sample""$suffix".covstats.txt
-	bbmerge.sh in1="$trim_read1" in2="$trim_read2" out="$merged_reads" outu1="$unmerged_read1" outu2="$unmerged_read2" ow 1>> $log 2> $bbmerge_stats
+	# Perform merging if nomerge is not set
+	if ! [ $nomerge == "nomerge" ]; then
 
-	# Check if merged reads exist
-	if ! [[ -f $merged_reads ]]; then
-		echo "Error: Merged read file $merged_reads does not exist." >> $log
-		exit 2
+		# Run BBmerge
+		echo Running bbmerge.sh on $sample >> $log
+		echo Running bbmerge.sh on $sample
+		suffix="$suffix"_merged
+		bbmerge_stats="$sample""$suffix"_bbmerge.stats.txt
+		bbmerge.sh in1="$trim_read1" in2="$trim_read2" out="$merged_reads" outu1="$unmerged_read1" outu2="$unmerged_read2" mininsert=$min_length ow 1>> $log 2> $bbmerge_stats
+
+		# Check if merged reads exist
+		if ! [[ -f $merged_reads ]]; then
+			echo "Error: Merged read file $merged_reads does not exist." >> $log
+			exit 2
+		fi
 	fi
 
 # If Single End only run bbduk
@@ -164,7 +193,14 @@ echo Running bbmap alignment on $sample >> $log
 echo Running bbmap alignment on $sample
 suffix="$suffix"_bbmap
 bam_out="$sample""$suffix".bam
-bbmap.sh in="$merged_reads" t=$threads ref=$reference basecov=$sample$suffix.basecov.txt nodisk=t out=$bam_out interleaved=f mappedonly=t covstats=$bbmap_covstats statsfile="$sample""$suffix".stats.txt maxindel=$max_indel dellenfilter=$max_indel inslenfilter=$max_indel local=t sam=1.3 ow >> $log
+bbmap_covstats="$sample""$suffix".covstats.txt
+
+if [ $nomerge == "nomerge" ]; then
+	bbmap.sh in1="$trim_read1" in2="$trim_read2" t=$threads ref=$reference basecov=$sample$suffix.basecov.txt nodisk=t out=$bam_out interleaved=f mappedonly=t covstats=$bbmap_covstats statsfile="$sample""$suffix".stats.txt maxindel=$max_indel dellenfilter=$max_indel inslenfilter=$max_indel local=t sam=1.3 ow >> $log
+else
+	bbmap.sh in="$merged_reads" t=$threads ref=$reference basecov=$sample$suffix.basecov.txt nodisk=t out=$bam_out interleaved=f mappedonly=t covstats=$bbmap_covstats statsfile="$sample""$suffix".stats.txt maxindel=$max_indel dellenfilter=$max_indel inslenfilter=$max_indel local=t sam=1.3 ow >> $log
+fi
+
 if ! [[ -f $bam_out ]]; then
 	echo "Error: Bam file $bam_out does not exist." >> $log
 	exit 2
@@ -205,6 +241,7 @@ suffix="$suffix"_filtered
 bam_in=$bam_out
 bam_out="$sample""$suffix".sorted.bam
 reformat.sh in=$bam_in out=stdout.bam mappedonly=t sam=1.3 ow=t ref=$reference minmapq=$min_mapping_quality 2>> "$sample""$suffix"_reformat.stats.txt | samtools sort -T "$sample""$suffix" - -o $bam_out
+bbmap_bam_stats="$sample""$suffix".sorted.bam.stats.txt
 samtools stats -@ $threads "$sample""$suffix".sorted.bam | grep ^SN | cut -f 2- > "$sample""$suffix".sorted.bam.stats.txt
 
 
