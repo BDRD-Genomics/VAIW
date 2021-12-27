@@ -492,7 +492,7 @@ print_log "\n[ Calling variants with ivar ]"
 ivar_snv_prefix="$sample"_ivar.snv
 ivar_snv_file="$ivar_snv_prefix".tsv
 ivar_vcf_file="$ivar_snv_prefix".vcf
-run_ivar_background_cmd "ivar variants -m $min_coverage -t $min_frequency -p $ivar_snv_prefix -r $reference_fasta -g $reference_gff < $mpileup_file >> $log "
+run_ivar_cmd "ivar variants -m $min_coverage -t $min_frequency -p $ivar_snv_prefix -r $reference_fasta -g $reference_gff < $mpileup_file >> $log "
 
 # Wait for ivar consensus and snv calls to be done (run in background)
 #sleep_count=0
