@@ -264,6 +264,10 @@ if [[ $reference == "SARS-CoV-2" ]]; then
   reference_gff="$reference_dir"/SARS_CoV_2.reference.gff3
   reference_acc=MN908947.3
 
+  # ARTIC V4.1 primers
+  if [[ $protocol == *ARTICv4.1* ]]; then
+    primer_bed="$reference_dir"/SARS_CoV_2.primers_ARTICv4.1.bed
+    min_length=80
   # ARTIC V4 primers
   if [[ $protocol == *ARTICv4* ]]; then
     primer_bed="$reference_dir"/SARS_CoV_2.primers_ARTICv4.bed
@@ -473,9 +477,7 @@ run_cmd "samtools mpileup -A -d 50000 -B -Q 0 --reference $reference_fasta $bam_
 
 # iVar consensus calling
 print_log "\n[ Calling consensus with ivar ]"
-run_ivar_cmd "ivar consensus -m $min_coverage -t $min_frequency -p $sample.consensus -n N < $mpileup_file >> $log"
-consensus_stats="$sample".consensus.stats.txt
-run_cmd "stats.sh in=$sample.consensus.fa out=$consensus_stats format=2 overwrite=t"
+run_ivar_cmd "ivar consensus -m $min_coverage -t $min_frequency -p $sample.consensus -n N < $mpileup_file >> $log  && touch consensus.done &"
 
 # iVar
 print_log "\n[ Calling variants with ivar ]"
@@ -483,7 +485,24 @@ print_log "\n[ Calling variants with ivar ]"
 ivar_snv_prefix="$sample"_ivar.snv
 ivar_snv_file="$ivar_snv_prefix".tsv
 ivar_vcf_file="$ivar_snv_prefix".vcf
-run_ivar_cmd "ivar variants -m $min_coverage -t $min_frequency -p $ivar_snv_prefix -r $reference_fasta -g $reference_gff < $mpileup_file >> $log"
+run_ivar_cmd "ivar variants -m $min_coverage -t $min_frequency -p $ivar_snv_prefix -r $reference_fasta -g $reference_gff < $mpileup_file >> $log && touch ivar_snv.done &"
+
+# Wait for ivar consensus and snv calls to be done (run in background)
+sleep_count=0
+until [[ -f consensus.done && -f ivar_snv.done ]]
+do
+  sleep 1
+  let "sleep_count+=1"
+  # After 5 minutes report status
+  if [[ "$sleep_count" -eq 300 ]]; then
+    print_log "Waiting on ivar consensus and snv calling."
+    run_cmd "ls -l $ivar_snv_file $sample.consensus.fa"
+  fi
+done
+
+consensus_stats="$sample".consensus.stats.txt
+run_cmd "stats.sh in=$sample.consensus.fa out=$consensus_stats format=2 overwrite=t"
+
 snv_passed="$ivar_snv_prefix".pass.tsv
 run_cmd "head -n 1 $ivar_snv_file > $snv_passed"
 run_cmd "grep 'TRUE' $ivar_snv_file >> $snv_passed && sed -i 's/^/$sample\t/' $snv_passed" "continue"
