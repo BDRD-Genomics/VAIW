@@ -39,20 +39,22 @@ def find_primer(bed, pos, direction):
     # Manually edited by Logan Voegtly on 2020_10_13 to check if primer pair selected is before/after the appropriate piece
     closest = "False"
     if direction == '+':
-        max_diff = "False"
+        closest_diff = "False"
         for p in bed:
             max_after_primer_start = p['end'] - p['start']
             max_before_primer_start = 50
             diff = (p['start'] - pos)
             # The difference needs to be a negative number, ie occurs before the current position
             if p['direction'] == direction and -max_after_primer_start <= diff <= max_before_primer_start:
-                if max_diff == "False":
-                    max_diff = diff
+                if closest_diff == "False":
+                    closest_diff = diff
                 # working on the negative scale
-                if diff >= max_diff:
+                abs_closest_diff = abs(closest_diff)
+                abs_diff = abs(diff)
+                if abs_diff <= abs_closest_diff:
                     closest = (abs(p['start'] - pos), p['start'] - pos, p)
-                    max_diff = diff
-                    if max_diff == 0:
+                    closest_diff = diff
+                    if closest_diff == 0:
                         break
         # If the read occurs before the first primer set to first primer
         if closest == "False":
@@ -71,19 +73,21 @@ def find_primer(bed, pos, direction):
 #                        for p in bed if p['direction'] == direction and (p['start'] - pos) >=0 ], key=itemgetter(0))
     # Negative direction
     else:
-        min_diff = "False"
+        closest_diff = "False"
         for p in bed:
             max_before_primer_end = p['end'] - p['start']
             max_after_primer_end = 50
             diff = (p['end'] - pos)
             # The difference needs to be a positive number, ie occurs after the current position
             if p['direction'] == direction and -max_after_primer_end <= diff <= max_before_primer_end:
-                if min_diff == "False":
-                    min_diff = diff
-                if diff <= min_diff:
+                if closest_diff == "False":
+                    closest_diff = diff
+                abs_closest_diff = abs(closest_diff)
+                abs_diff = abs(diff)
+                if abs_diff <= abs_closest_diff:
                     closest = (abs(p['end'] - pos), p['end'] - pos, p)
-                    min_diff = diff
-                    if min_diff == 0:
+                    closest_diff = diff
+                    if closest_diff == 0:
                         break
         # If the read falls behind the last primer set to last primer
         if closest == "False":
