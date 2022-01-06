@@ -41,9 +41,11 @@ def find_primer(bed, pos, direction):
     if direction == '+':
         max_diff = "False"
         for p in bed:
+            max_after_primer_start = p['end'] - p['start']
+            max_before_primer_start = 50
             diff = (p['start'] - pos)
             # The difference needs to be a negative number, ie occurs before the current position
-            if p['direction'] == direction and diff <= 50:
+            if p['direction'] == direction and -max_after_primer_start <= diff <= max_before_primer_start:
                 if max_diff == "False":
                     max_diff = diff
                 # working on the negative scale
@@ -71,12 +73,17 @@ def find_primer(bed, pos, direction):
     else:
         min_diff = "False"
         for p in bed:
+            max_before_primer_end = p['end'] - p['start']
+            max_after_primer_end = 50
             diff = (p['end'] - pos)
             # The difference needs to be a positive number, ie occurs after the current position
-            if p['direction'] == direction and diff >= -50:
+            if p['direction'] == direction and -max_after_primer_end <= diff <= max_before_primer_end:
+                if pos >= 3155:
+                    new_pos = "test"
+                    pass
                 if min_diff == "False":
                     min_diff = diff
-                if diff >= min_diff:
+                if diff <= min_diff:
                     closest = (abs(p['end'] - pos), p['end'] - pos, p)
                     min_diff = diff
                     if min_diff == 0:

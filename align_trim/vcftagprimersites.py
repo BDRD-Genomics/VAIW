@@ -52,16 +52,22 @@ def merge_sites(canonical, alt):
         raise SystemExit(1)
 
     # merge the start/ends of the alt with the canonical to get the largest window possible
-    if canonical['direction'] == '+':
-        if alt['start'] < canonical['start']:
-            mergedSite['start'] = alt['start']
-        if alt['end'] > canonical['end']:
-            mergedSite['end'] = alt['end']
-    else:
-        if alt['start'] > canonical['start']:
-            mergedSite['start'] = alt['start']
-        if alt['end'] < canonical['end']:
-            mergedSite['end'] = alt['end']
+    # Updated by Logan Voegtly to correctly find largest window for negative strand
+    # original code
+    # if canonical['direction'] == '+':
+    #     if alt['start'] < canonical['start']:
+    #         mergedSite['start'] = alt['start']
+    #     if alt['end'] > canonical['end']:
+    #         mergedSite['end'] = alt['end']
+    # else:
+    #     if alt['start'] > canonical['start']:
+    #         mergedSite['start'] = alt['start']
+    #     if alt['end'] < canonical['end']:
+    #         mergedSite['end'] = alt['end']
+    if alt['start'] < canonical['start']:
+        mergedSite['start'] = alt['start']
+    if alt['end'] > canonical['end']:
+        mergedSite['end'] = alt['end']
     return mergedSite
 
 
@@ -102,39 +108,39 @@ def read_bed_file(fn):
     #     lambda row: getPrimerDirection(row.Primer_ID), axis=1)
 
     # separate alt primers into a new dataframe
-    altFilter = primers['Primer_ID'].str.contains('_alt')
-    alts = pd.DataFrame(
-        columns=('chrom', 'start', 'end', 'Primer_ID', 'PoolName', 'direction'))
-    alts = pd.concat([alts, primers[altFilter]])
-    primers = primers.drop(primers[altFilter].index.values)
-
-    # convert the primers dataframe to dictionary, indexed by Primer_ID
-    #  - verify_integrity is used to prevent duplicate Primer_IDs being processed
+    # altFilter = primers['Primer_ID'].str.contains('_alt')
+    # alts = pd.DataFrame(
+    #     columns=('chrom', 'start', 'end', 'Primer_ID', 'PoolName', 'direction'))
+    # alts = pd.concat([alts, primers[altFilter]])
+    # primers = primers.drop(primers[altFilter].index.values)
+    #
+    # # convert the primers dataframe to dictionary, indexed by Primer_ID
+    # #  - verify_integrity is used to prevent duplicate Primer_IDs being processed
     bedFile = primers.set_index('Primer_ID', drop=False,
                                 verify_integrity=True).T.to_dict()
-
-    # if there were no alts, return the bedfile as a list of dicts
-    if len(alts.index) == 0:
-        return list(bedFile.values())
-
-    # merge alts
-    for _, row in alts.iterrows():
-        primerID = row['Primer_ID'].split('_alt')[0]
-
-        # check the bedFile if another version of this primer exists
-        if primerID not in bedFile:
-
-            # add to the bed file and continue
-            bedFile[primerID] = row
-            continue
-
-        # otherwise, we've got a primer ID we've already seen so merge the alt
-        mergedSite = merge_sites(bedFile[primerID], row)
-
-        # update the bedFile
-        bedFile[primerID] = mergedSite
-
-    # return the bedFile as a list
+    #
+    # # if there were no alts, return the bedfile as a list of dicts
+    # if len(alts.index) == 0:
+    #     return list(bedFile.values())
+    #
+    # # merge alts
+    # for _, row in alts.iterrows():
+    #     primerID = row['Primer_ID'].split('_alt')[0]
+    #
+    #     # check the bedFile if another version of this primer exists
+    #     if primerID not in bedFile:
+    #
+    #         # add to the bed file and continue
+    #         bedFile[primerID] = row
+    #         continue
+    #
+    #     # otherwise, we've got a primer ID we've already seen so merge the alt
+    #     mergedSite = merge_sites(bedFile[primerID], row)
+    #
+    #     # update the bedFile
+    #     bedFile[primerID] = mergedSite
+    #
+    # # return the bedFile as a list
     return [value for value in bedFile.values()]
 
 
