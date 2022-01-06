@@ -78,9 +78,6 @@ def find_primer(bed, pos, direction):
             diff = (p['end'] - pos)
             # The difference needs to be a positive number, ie occurs after the current position
             if p['direction'] == direction and -max_after_primer_end <= diff <= max_before_primer_end:
-                if pos >= 3155:
-                    new_pos = "test"
-                    pass
                 if min_diff == "False":
                     min_diff = diff
                 if diff <= min_diff:
