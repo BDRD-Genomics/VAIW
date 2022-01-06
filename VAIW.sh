@@ -5,7 +5,8 @@ source /usr/local/etc/profile.d/conda.sh
 
 ## Authors: Logan Voegtly <logan.j.voegtly.ctr@mail.mil> & Kyle Long <kyle.a.long8.ctr@mail.mil> & Gregory Rice <gregory.k.rice.ctr@mail.mil> & Katie Arnold <catherine.e.arnold13.civ@mail.mil>
 ## Last modified: December 7, 2021
-version=v2.0.1
+version=v2.1.0
+## Update: 2.1.0 Major fixes for align_trim
 ## Update: 2.0.1 Bugfixes
 ## Update: 2.0.0 Rewrite of the script to be more generic for references and use named arguments instead of positional arguments
 ## Update: 1.2.0 Update how coverage is calculated for summary stats and optimize parameters; incorporate nomerge
