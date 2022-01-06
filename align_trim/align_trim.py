@@ -50,6 +50,8 @@ def find_primer(bed, pos, direction):
                 if diff >= max_diff:
                     closest = (abs(p['start'] - pos), p['start'] - pos, p)
                     max_diff = diff
+                    if max_diff == 0:
+                        break
         # If the read occurs before the first primer set to first primer
         if closest == "False":
             min_p = "False"
@@ -74,9 +76,11 @@ def find_primer(bed, pos, direction):
             if p['direction'] == direction and diff >= -50:
                 if min_diff == "False":
                     min_diff = diff
-                if diff <= min_diff:
+                if diff >= min_diff:
                     closest = (abs(p['end'] - pos), p['end'] - pos, p)
                     min_diff = diff
+                    if min_diff == 0:
+                        break
         # If the read falls behind the last primer set to last primer
         if closest == "False":
             max_p = "False"

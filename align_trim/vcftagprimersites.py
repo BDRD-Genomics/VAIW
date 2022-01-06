@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 
+# Updated by Logan Voegtly
+
 import pandas as pd
 import vcf
 import sys
@@ -79,12 +81,13 @@ def read_bed_file(fn):
     """
 
     # read the primer scheme into a pandas dataframe and run type, length and null checks
+    # Including +/- directions for normal bed files without the need for LEFT and RIGHT
     primers = pd.read_csv(fn, sep='\t', header=None,
                           names=['chrom', 'start', 'end',
-                                 'Primer_ID', 'PoolName'],
+                                 'Primer_ID', 'PoolName', 'direction'],
                           dtype={'chrom': str, 'start': int, 'end': int,
-                                 'Primer_ID': str, 'PoolName': str},
-                          usecols=(0, 1, 2, 3, 4),
+                                 'Primer_ID': str, 'PoolName': str, 'direction': str},
+                          usecols=(0, 1, 2, 3, 4, 5),
                           skiprows=0)
     if len(primers.index) < 1:
         print("primer scheme file is empty", file=sys.stderr)
@@ -94,8 +97,9 @@ def read_bed_file(fn):
         raise SystemExit(1)
 
     # compute the direction
-    primers['direction'] = primers.apply(
-        lambda row: getPrimerDirection(row.Primer_ID), axis=1)
+    # Original code
+    # primers['direction'] = primers.apply(
+    #     lambda row: getPrimerDirection(row.Primer_ID), axis=1)
 
     # separate alt primers into a new dataframe
     altFilter = primers['Primer_ID'].str.contains('_alt')
