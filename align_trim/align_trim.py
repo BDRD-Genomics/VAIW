@@ -1,12 +1,13 @@
 #!/usr/bin/env python
 
 # Written by Nick Loman
+# Updated by Logan Voegtly
 
 from copy import copy
 from collections import defaultdict
 import pysam
 import sys
-from .vcftagprimersites import read_bed_file
+from vcftagprimersites import read_bed_file
 
 # consumesReference lookup for if a CIGAR operation consumes the reference sequence
 consumesReference = [True, False, True, True, False, False, False, True]
@@ -32,14 +33,64 @@ def find_primer(bed, pos, direction):
     tuple
         The offset, distance and bed entry for the closest primer to the query position
     """
-    from operator import itemgetter
 
+
+#     from operator import itemgetter
+    # Manually edited by Logan Voegtly on 2020_10_13 to check if primer pair selected is before/after the appropriate piece
+    closest = "False"
     if direction == '+':
-        closest = min([(abs(p['start'] - pos), p['start'] - pos, p)
-                       for p in bed if p['direction'] == direction], key=itemgetter(0))
+        max_diff = "False"
+        for p in bed:
+            diff = (p['start'] - pos)
+            # The difference needs to be a negative number, ie occurs before the current position
+            if p['direction'] == direction and diff <= 50:
+                if max_diff == "False":
+                    max_diff = diff
+                # working on the negative scale
+                if diff >= max_diff:
+                    closest = (abs(p['start'] - pos), p['start'] - pos, p)
+                    max_diff = diff
+        # If the read occurs before the first primer set to first primer
+        if closest == "False":
+            min_p = "False"
+            # print("closest is NONE")
+            for p in bed:
+                if p['direction'] == direction:
+                    if min_p == "False":
+                        min_p = p
+                    if p['start'] <= min_p['start']:
+                        min_p = p
+                        closest = (abs(p['start'] - pos), p['start'] - pos, p)
+
+# Original Code
+#         closest = min([(abs(p['start'] - pos), p['start'] - pos, p)
+#                        for p in bed if p['direction'] == direction and (p['start'] - pos) >=0 ], key=itemgetter(0))
+    # Negative direction
     else:
-        closest = min([(abs(p['end'] - pos), p['end'] - pos, p)
-                       for p in bed if p['direction'] == direction], key=itemgetter(0))
+        min_diff = "False"
+        for p in bed:
+            diff = (p['end'] - pos)
+            # The difference needs to be a positive number, ie occurs after the current position
+            if p['direction'] == direction and diff >= -50:
+                if min_diff == "False":
+                    min_diff = diff
+                if diff <= min_diff:
+                    closest = (abs(p['end'] - pos), p['end'] - pos, p)
+                    min_diff = diff
+        # If the read falls behind the last primer set to last primer
+        if closest == "False":
+            max_p = "False"
+            for p in bed:
+                if p['direction'] == direction:
+                    if max_p == "False":
+                        max_p = p
+                    if p['end'] >= max_p['end']:
+                        max_p = p
+                        closest = (abs(p['end'] - pos), p['end'] - pos, p)
+        # Original Code
+#         print("\nMINUS: position %s" % pos)
+#         closest = min([(abs(p['end'] - pos), p['end'] - pos, p)
+#                        for p in bed if p['direction'] == direction], key=itemgetter(0))
     return closest
 
 

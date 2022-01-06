@@ -153,6 +153,7 @@ reference="SARS-CoV-2"
 nomerge=0
 
 sample_directory=/mnt/data/
+align_trim_directory=/usr/local/bin/VAIW/align_trim
 # TODO: implement qscore, min_length, and other read quality metrics
 # TODO: Implement variables for variant calling parameters
 
@@ -453,7 +454,7 @@ if [[ ! $protocol == *probes* && ! $protocol == *shotgun* ]]; then
   suffix="$suffix"_primertrimmed.rg
   bam_in=$bam_out
   bam_out="$sample""$suffix".sorted.bam
-  run_cmd "align_trim --no-read-groups $primer_bed  < $bam_in 2> $sample$suffix.alignreport.er.txt | samtools sort -T $sample$suffix - -o $bam_out"
+  run_cmd "$align_trim_directory/align_trim.py --no-read-groups $primer_bed  < $bam_in 2> $sample$suffix.alignreport.er.txt | samtools sort -T $sample$suffix - -o $bam_out"
   bam_stats="$sample""$suffix".sorted.bam.stats.txt
   get_bam_stats "$bam_out" "$bam_stats"
   if ! [[ -f $bam_out ]]; then
