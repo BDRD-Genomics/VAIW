@@ -1,5 +1,5 @@
 ## New in v2:
-###Version 2 of VAIW includes:
+### Version 2 of VAIW includes:
 * Rewrite of the script to be more generic for different references
 * Ability to analyze user provided references (fasta, gff) and amplicons (primer bed file)
 * Use named arguments instead of positional arguments
