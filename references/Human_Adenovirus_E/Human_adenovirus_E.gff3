@@ -1,0 +1,233 @@
+##sequence-region NC_003266.2 1 35994
+##species https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=130308
+NC_003266.2	RefSeq	region	1	35994	.	+	.	ID=NC_003266.2:1..35994;Dbxref=taxon:130308;acronym=HAdV-E;gbkey=Src;genome=genomic;mol_type=genomic DNA;old-name=Human adenovirus E;serotype=human adenovirus 4;strain=vaccine (CL 68578)
+NC_003266.2	RefSeq	inverted_repeat	1	116	.	+	.	ID=id-NC_003266.2:1..116;Note=ITR;gbkey=repeat_region;rpt_type=inverted
+NC_003266.2	RefSeq	gene	479	1504	.	+	.	ID=gene-HAdVE_gp01;Dbxref=GeneID:2958468;Name=E1A;gbkey=Gene;gene=E1A;gene_biotype=protein_coding;locus_tag=HAdVE_gp01
+NC_003266.2	RefSeq	mRNA	511	1504	.	+	.	ID=rna-HAdVE_gp01;Parent=gene-HAdVE_gp01;Dbxref=GeneID:2958468;gbkey=mRNA;gene=E1A;locus_tag=HAdVE_gp01;product=E1A
+NC_003266.2	RefSeq	exon	511	1140	.	+	.	ID=exon-HAdVE_gp01-1;Parent=rna-HAdVE_gp01;Dbxref=GeneID:2958468;gbkey=mRNA;gene=E1A;locus_tag=HAdVE_gp01;product=E1A
+NC_003266.2	RefSeq	exon	1233	1504	.	+	.	ID=exon-HAdVE_gp01-2;Parent=rna-HAdVE_gp01;Dbxref=GeneID:2958468;gbkey=mRNA;gene=E1A;locus_tag=HAdVE_gp01;product=E1A
+NC_003266.2	RefSeq	CDS	576	1140	.	+	0	ID=cds-YP_068018.1;Parent=rna-HAdVE_gp01;Dbxref=Genbank:YP_068018.1,GeneID:2958468;Name=YP_068018.1;gbkey=CDS;gene=E1A;locus_tag=HAdVE_gp01;product=E1A;protein_id=YP_068018.1
+NC_003266.2	RefSeq	CDS	1233	1441	.	+	2	ID=cds-YP_068018.1;Parent=rna-HAdVE_gp01;Dbxref=Genbank:YP_068018.1,GeneID:2958468;Name=YP_068018.1;gbkey=CDS;gene=E1A;locus_tag=HAdVE_gp01;product=E1A;protein_id=YP_068018.1
+NC_003266.2	RefSeq	TATA_box	479	485	.	+	.	ID=id-HAdVE_gp01;Parent=gene-HAdVE_gp01;Dbxref=GeneID:2958468;gbkey=regulatory;gene=E1A;locus_tag=HAdVE_gp01;regulatory_class=TATA_box
+NC_003266.2	RefSeq	polyA_signal_sequence	1499	1504	.	+	.	ID=id-HAdVE_gp01-2;Parent=gene-HAdVE_gp01;Dbxref=GeneID:2958468;gbkey=regulatory;gene=E1A;locus_tag=HAdVE_gp01;regulatory_class=polyA_signal_sequence
+NC_003266.2	RefSeq	gene	1558	3889	.	+	.	ID=gene-HAdVE_gp02;Dbxref=GeneID:2958470;Name=E1B;gbkey=Gene;gene=E1B;gene_biotype=protein_coding;locus_tag=HAdVE_gp02
+NC_003266.2	RefSeq	mRNA	1587	3889	.	+	.	ID=rna-HAdVE_gp02;Parent=gene-HAdVE_gp02;Dbxref=GeneID:2958470;gbkey=mRNA;gene=E1B;locus_tag=HAdVE_gp02;product=E1B 19K
+NC_003266.2	RefSeq	exon	1587	3889	.	+	.	ID=exon-HAdVE_gp02-1;Parent=rna-HAdVE_gp02;Dbxref=GeneID:2958470;gbkey=mRNA;gene=E1B;locus_tag=HAdVE_gp02;product=E1B 19K
+NC_003266.2	RefSeq	CDS	1600	2115	.	+	0	ID=cds-YP_068019.1;Parent=rna-HAdVE_gp02;Dbxref=Genbank:YP_068019.1,GeneID:2958470;Name=YP_068019.1;gbkey=CDS;gene=E1B;locus_tag=HAdVE_gp02;product=E1B 19K;protein_id=YP_068019.1
+NC_003266.2	RefSeq	mRNA	1587	3889	.	+	.	ID=rna-HAdVE_gp02-2;Parent=gene-HAdVE_gp02;Dbxref=GeneID:2958470;gbkey=mRNA;gene=E1B;locus_tag=HAdVE_gp02;product=E1B 55K
+NC_003266.2	RefSeq	exon	1587	3889	.	+	.	ID=exon-HAdVE_gp02-2-1;Parent=rna-HAdVE_gp02-2;Dbxref=GeneID:2958470;gbkey=mRNA;gene=E1B;locus_tag=HAdVE_gp02;product=E1B 55K
+NC_003266.2	RefSeq	CDS	1905	3356	.	+	0	ID=cds-YP_068020.1;Parent=rna-HAdVE_gp02-2;Dbxref=Genbank:YP_068020.1,GeneID:2958470;Name=YP_068020.1;gbkey=CDS;gene=E1B;locus_tag=HAdVE_gp02;product=E1B 55K;protein_id=YP_068020.1
+NC_003266.2	RefSeq	TATA_box	1558	1664	.	+	.	ID=id-HAdVE_gp02;Parent=gene-HAdVE_gp02;Dbxref=GeneID:2958470;gbkey=regulatory;gene=E1B;locus_tag=HAdVE_gp02;regulatory_class=TATA_box
+NC_003266.2	RefSeq	gene	3390	3889	.	+	.	ID=gene-HAdVE_gp03;Dbxref=GeneID:2958474;Name=IX;gbkey=Gene;gene=IX;gene_biotype=protein_coding;locus_tag=HAdVE_gp03
+NC_003266.2	RefSeq	mRNA	3418	3889	.	+	.	ID=rna-HAdVE_gp03;Parent=gene-HAdVE_gp03;Dbxref=GeneID:2958474;gbkey=mRNA;gene=IX;locus_tag=HAdVE_gp03;product=IX
+NC_003266.2	RefSeq	exon	3418	3889	.	+	.	ID=exon-HAdVE_gp03-1;Parent=rna-HAdVE_gp03;Dbxref=GeneID:2958474;gbkey=mRNA;gene=IX;locus_tag=HAdVE_gp03;product=IX
+NC_003266.2	RefSeq	CDS	3441	3869	.	+	0	ID=cds-YP_068021.1;Parent=rna-HAdVE_gp03;Dbxref=Genbank:YP_068021.1,GeneID:2958474;Name=YP_068021.1;gbkey=CDS;gene=IX;locus_tag=HAdVE_gp03;product=IX;protein_id=YP_068021.1
+NC_003266.2	RefSeq	TATA_box	3390	3396	.	+	.	ID=id-HAdVE_gp03;Parent=gene-HAdVE_gp03;Dbxref=GeneID:2958474;Note=IX;gbkey=regulatory;gene=IX;locus_tag=HAdVE_gp03;regulatory_class=TATA_box
+NC_003266.2	RefSeq	polyA_signal_sequence	3865	3870	.	+	.	ID=id-NC_003266.2:3865..3870;Note=E1B/IX;gbkey=regulatory;regulatory_class=polyA_signal_sequence
+NC_003266.2	RefSeq	polyA_signal_sequence	3880	3885	.	+	.	ID=id-NC_003266.2:3880..3885;Note=E1B/IX;gbkey=regulatory;regulatory_class=polyA_signal_sequence
+NC_003266.2	RefSeq	polyA_signal_sequence	3884	3889	.	+	.	ID=id-NC_003266.2:3884..3889;Note=E1B/IX;gbkey=regulatory;regulatory_class=polyA_signal_sequence
+NC_003266.2	RefSeq	gene	3929	26237	.	-	.	ID=gene-HAdVE_gp04;Dbxref=GeneID:2958478;Name=E2B;gbkey=Gene;gene=E2B;gene_biotype=protein_coding;locus_tag=HAdVE_gp04
+NC_003266.2	RefSeq	mRNA	3929	26237	.	-	.	ID=rna-HAdVE_gp04;Parent=gene-HAdVE_gp04;Dbxref=GeneID:2958478;gbkey=mRNA;gene=E2B;locus_tag=HAdVE_gp04;product=pol
+NC_003266.2	RefSeq	exon	26150	26237	.	-	.	ID=exon-HAdVE_gp04-1;Parent=rna-HAdVE_gp04;Dbxref=GeneID:2958478;gbkey=mRNA;gene=E2B;locus_tag=HAdVE_gp04;product=pol
+NC_003266.2	RefSeq	exon	23954	24030	.	-	.	ID=exon-HAdVE_gp04-2;Parent=rna-HAdVE_gp04;Dbxref=GeneID:2958478;gbkey=mRNA;gene=E2B;locus_tag=HAdVE_gp04;product=pol
+NC_003266.2	RefSeq	exon	13765	13849	.	-	.	ID=exon-HAdVE_gp04-3;Parent=rna-HAdVE_gp04;Dbxref=GeneID:2958478;gbkey=mRNA;gene=E2B;locus_tag=HAdVE_gp04;product=pol
+NC_003266.2	RefSeq	exon	3929	8605	.	-	.	ID=exon-HAdVE_gp04-4;Parent=rna-HAdVE_gp04;Dbxref=GeneID:2958478;gbkey=mRNA;gene=E2B;locus_tag=HAdVE_gp04;product=pol
+NC_003266.2	RefSeq	CDS	13765	13773	.	-	0	ID=cds-YP_068023.1;Parent=rna-HAdVE_gp04;Dbxref=Genbank:YP_068023.1,GeneID:2958478;Name=YP_068023.1;gbkey=CDS;gene=E2B;locus_tag=HAdVE_gp04;product=pol;protein_id=YP_068023.1
+NC_003266.2	RefSeq	CDS	5033	8605	.	-	0	ID=cds-YP_068023.1;Parent=rna-HAdVE_gp04;Dbxref=Genbank:YP_068023.1,GeneID:2958478;Name=YP_068023.1;gbkey=CDS;gene=E2B;locus_tag=HAdVE_gp04;product=pol;protein_id=YP_068023.1
+NC_003266.2	RefSeq	mRNA	3929	26237	.	-	.	ID=rna-HAdVE_gp04-2;Parent=gene-HAdVE_gp04;Dbxref=GeneID:2958478;gbkey=mRNA;gene=E2B;locus_tag=HAdVE_gp04;product=pTP
+NC_003266.2	RefSeq	exon	26150	26237	.	-	.	ID=exon-HAdVE_gp04-2-1;Parent=rna-HAdVE_gp04-2;Dbxref=GeneID:2958478;gbkey=mRNA;gene=E2B;locus_tag=HAdVE_gp04;product=pTP
+NC_003266.2	RefSeq	exon	23954	24030	.	-	.	ID=exon-HAdVE_gp04-2-2;Parent=rna-HAdVE_gp04-2;Dbxref=GeneID:2958478;gbkey=mRNA;gene=E2B;locus_tag=HAdVE_gp04;product=pTP
+NC_003266.2	RefSeq	exon	13765	13849	.	-	.	ID=exon-HAdVE_gp04-2-3;Parent=rna-HAdVE_gp04-2;Dbxref=GeneID:2958478;gbkey=mRNA;gene=E2B;locus_tag=HAdVE_gp04;product=pTP
+NC_003266.2	RefSeq	exon	3929	10323	.	-	.	ID=exon-HAdVE_gp04-2-4;Parent=rna-HAdVE_gp04-2;Dbxref=GeneID:2958478;gbkey=mRNA;gene=E2B;locus_tag=HAdVE_gp04;product=pTP
+NC_003266.2	RefSeq	CDS	13765	13773	.	-	0	ID=cds-YP_068024.1;Parent=rna-HAdVE_gp04-2;Dbxref=Genbank:YP_068024.1,GeneID:2958478;Name=YP_068024.1;gbkey=CDS;gene=E2B;locus_tag=HAdVE_gp04;product=pTP;protein_id=YP_068024.1
+NC_003266.2	RefSeq	CDS	8404	10323	.	-	0	ID=cds-YP_068024.1;Parent=rna-HAdVE_gp04-2;Dbxref=Genbank:YP_068024.1,GeneID:2958478;Name=YP_068024.1;gbkey=CDS;gene=E2B;locus_tag=HAdVE_gp04;product=pTP;protein_id=YP_068024.1
+NC_003266.2	RefSeq	gene	3929	5672	.	-	.	ID=gene-HAdVE_gp05;Dbxref=GeneID:2958471;Name=IVa2;gbkey=Gene;gene=IVa2;gene_biotype=protein_coding;locus_tag=HAdVE_gp05
+NC_003266.2	RefSeq	mRNA	3929	5672	.	-	.	ID=rna-HAdVE_gp05;Parent=gene-HAdVE_gp05;Dbxref=GeneID:2958471;gbkey=mRNA;gene=IVa2;locus_tag=HAdVE_gp05;product=IVa2
+NC_003266.2	RefSeq	exon	5542	5672	.	-	.	ID=exon-HAdVE_gp05-1;Parent=rna-HAdVE_gp05;Dbxref=GeneID:2958471;gbkey=mRNA;gene=IVa2;locus_tag=HAdVE_gp05;product=IVa2
+NC_003266.2	RefSeq	exon	3929	5263	.	-	.	ID=exon-HAdVE_gp05-2;Parent=rna-HAdVE_gp05;Dbxref=GeneID:2958471;gbkey=mRNA;gene=IVa2;locus_tag=HAdVE_gp05;product=IVa2
+NC_003266.2	RefSeq	CDS	5542	5554	.	-	0	ID=cds-YP_068022.1;Parent=rna-HAdVE_gp05;Dbxref=Genbank:YP_068022.1,GeneID:2958471;Name=YP_068022.1;gbkey=CDS;gene=IVa2;locus_tag=HAdVE_gp05;product=IVa2;protein_id=YP_068022.1
+NC_003266.2	RefSeq	CDS	3930	5263	.	-	2	ID=cds-YP_068022.1;Parent=rna-HAdVE_gp05;Dbxref=Genbank:YP_068022.1,GeneID:2958471;Name=YP_068022.1;gbkey=CDS;gene=IVa2;locus_tag=HAdVE_gp05;product=IVa2;protein_id=YP_068022.1
+NC_003266.2	RefSeq	polyA_signal_sequence	3929	3934	.	-	.	ID=id-NC_003266.2:3929..3934;Note=E2B/IVa2;gbkey=regulatory;regulatory_class=polyA_signal_sequence
+NC_003266.2	RefSeq	gene	5854	32991	.	+	.	ID=gene-HAdVE_gp06;Dbxref=GeneID:2958476;Name=L5;gbkey=Gene;gene=L5;gene_biotype=protein_coding;locus_tag=HAdVE_gp06
+NC_003266.2	RefSeq	mRNA	5885	32991	.	+	.	ID=rna-HAdVE_gp06;Parent=gene-HAdVE_gp06;Dbxref=GeneID:2958476;gbkey=mRNA;gene=L5;locus_tag=HAdVE_gp06;product=L5 fiber
+NC_003266.2	RefSeq	exon	5885	5925	.	+	.	ID=exon-HAdVE_gp06-1;Parent=rna-HAdVE_gp06;Dbxref=GeneID:2958476;gbkey=mRNA;gene=L5;locus_tag=HAdVE_gp06;product=L5 fiber
+NC_003266.2	RefSeq	exon	6947	7018	.	+	.	ID=exon-HAdVE_gp06-2;Parent=rna-HAdVE_gp06;Dbxref=GeneID:2958476;gbkey=mRNA;gene=L5;locus_tag=HAdVE_gp06;product=L5 fiber
+NC_003266.2	RefSeq	exon	9456	9542	.	+	.	ID=exon-HAdVE_gp06-3;Parent=rna-HAdVE_gp06;Dbxref=GeneID:2958476;gbkey=mRNA;gene=L5;locus_tag=HAdVE_gp06;product=L5 fiber
+NC_003266.2	RefSeq	exon	31649	32991	.	+	.	ID=exon-HAdVE_gp06-4;Parent=rna-HAdVE_gp06;Dbxref=GeneID:2958476;gbkey=mRNA;gene=L5;locus_tag=HAdVE_gp06;product=L5 fiber
+NC_003266.2	RefSeq	CDS	31649	32926	.	+	0	ID=cds-YP_068048.1;Parent=rna-HAdVE_gp06;Dbxref=Genbank:YP_068048.1,GeneID:2958476;Name=YP_068048.1;gbkey=CDS;gene=L5;locus_tag=HAdVE_gp06;product=fiber;protein_id=YP_068048.1
+NC_003266.2	RefSeq	polyA_signal_sequence	32986	32991	.	+	.	ID=id-HAdVE_gp06;Parent=gene-HAdVE_gp06;Dbxref=GeneID:2958476;Note=L5;gbkey=regulatory;gene=L5;locus_tag=HAdVE_gp06;regulatory_class=polyA_signal_sequence
+NC_003266.2	RefSeq	gene	5854	27319	.	+	.	ID=gene-HAdVE_gp07;Dbxref=GeneID:2958479;Name=L4;gbkey=Gene;gene=L4;gene_biotype=protein_coding;locus_tag=HAdVE_gp07
+NC_003266.2	RefSeq	mRNA	5885	27319	.	+	.	ID=rna-HAdVE_gp07;Parent=gene-HAdVE_gp07;Dbxref=GeneID:2958479;gbkey=mRNA;gene=L4;locus_tag=HAdVE_gp07;product=L4 100K
+NC_003266.2	RefSeq	exon	5885	5925	.	+	.	ID=exon-HAdVE_gp07-1;Parent=rna-HAdVE_gp07;Dbxref=GeneID:2958479;gbkey=mRNA;gene=L4;locus_tag=HAdVE_gp07;product=L4 100K
+NC_003266.2	RefSeq	exon	6947	7018	.	+	.	ID=exon-HAdVE_gp07-2;Parent=rna-HAdVE_gp07;Dbxref=GeneID:2958479;gbkey=mRNA;gene=L4;locus_tag=HAdVE_gp07;product=L4 100K
+NC_003266.2	RefSeq	exon	9456	9542	.	+	.	ID=exon-HAdVE_gp07-3;Parent=rna-HAdVE_gp07;Dbxref=GeneID:2958479;gbkey=mRNA;gene=L4;locus_tag=HAdVE_gp07;product=L4 100K
+NC_003266.2	RefSeq	exon	23326	27319	.	+	.	ID=exon-HAdVE_gp07-4;Parent=rna-HAdVE_gp07;Dbxref=GeneID:2958479;gbkey=mRNA;gene=L4;locus_tag=HAdVE_gp07;product=L4 100K
+NC_003266.2	RefSeq	CDS	23341	25716	.	+	0	ID=cds-YP_068035.1;Parent=rna-HAdVE_gp07;Dbxref=Genbank:YP_068035.1,GeneID:2958479;Name=YP_068035.1;gbkey=CDS;gene=L4;locus_tag=HAdVE_gp07;product=100K;protein_id=YP_068035.1
+NC_003266.2	RefSeq	mRNA	5885	27319	.	+	.	ID=rna-HAdVE_gp07-2;Parent=gene-HAdVE_gp07;Dbxref=GeneID:2958479;gbkey=mRNA;gene=L4;locus_tag=HAdVE_gp07;product=L4 22K
+NC_003266.2	RefSeq	exon	5885	5925	.	+	.	ID=exon-HAdVE_gp07-2-1;Parent=rna-HAdVE_gp07-2;Dbxref=GeneID:2958479;gbkey=mRNA;gene=L4;locus_tag=HAdVE_gp07;product=L4 22K
+NC_003266.2	RefSeq	exon	6947	7018	.	+	.	ID=exon-HAdVE_gp07-2-2;Parent=rna-HAdVE_gp07-2;Dbxref=GeneID:2958479;gbkey=mRNA;gene=L4;locus_tag=HAdVE_gp07;product=L4 22K
+NC_003266.2	RefSeq	exon	9456	9542	.	+	.	ID=exon-HAdVE_gp07-2-3;Parent=rna-HAdVE_gp07-2;Dbxref=GeneID:2958479;gbkey=mRNA;gene=L4;locus_tag=HAdVE_gp07;product=L4 22K
+NC_003266.2	RefSeq	exon	25438	27319	.	+	.	ID=exon-HAdVE_gp07-2-4;Parent=rna-HAdVE_gp07-2;Dbxref=GeneID:2958479;gbkey=mRNA;gene=L4;locus_tag=HAdVE_gp07;product=L4 22K
+NC_003266.2	RefSeq	CDS	25439	25978	.	+	0	ID=cds-YP_068037.1;Parent=rna-HAdVE_gp07-2;Dbxref=Genbank:YP_068037.1,GeneID:2958479;Name=YP_068037.1;gbkey=CDS;gene=L4;locus_tag=HAdVE_gp07;product=22K;protein_id=YP_068037.1
+NC_003266.2	RefSeq	mRNA	5885	27319	.	+	.	ID=rna-HAdVE_gp07-3;Parent=gene-HAdVE_gp07;Dbxref=GeneID:2958479;gbkey=mRNA;gene=L4;locus_tag=HAdVE_gp07;product=L4 33K
+NC_003266.2	RefSeq	exon	5885	5925	.	+	.	ID=exon-HAdVE_gp07-3-1;Parent=rna-HAdVE_gp07-3;Dbxref=GeneID:2958479;gbkey=mRNA;gene=L4;locus_tag=HAdVE_gp07;product=L4 33K
+NC_003266.2	RefSeq	exon	6947	7018	.	+	.	ID=exon-HAdVE_gp07-3-2;Parent=rna-HAdVE_gp07-3;Dbxref=GeneID:2958479;gbkey=mRNA;gene=L4;locus_tag=HAdVE_gp07;product=L4 33K
+NC_003266.2	RefSeq	exon	9456	9542	.	+	.	ID=exon-HAdVE_gp07-3-3;Parent=rna-HAdVE_gp07-3;Dbxref=GeneID:2958479;gbkey=mRNA;gene=L4;locus_tag=HAdVE_gp07;product=L4 33K
+NC_003266.2	RefSeq	exon	25438	25760	.	+	.	ID=exon-HAdVE_gp07-3-4;Parent=rna-HAdVE_gp07-3;Dbxref=GeneID:2958479;gbkey=mRNA;gene=L4;locus_tag=HAdVE_gp07;product=L4 33K
+NC_003266.2	RefSeq	exon	25930	27319	.	+	.	ID=exon-HAdVE_gp07-3-5;Parent=rna-HAdVE_gp07-3;Dbxref=GeneID:2958479;gbkey=mRNA;gene=L4;locus_tag=HAdVE_gp07;product=L4 33K
+NC_003266.2	RefSeq	CDS	25439	25760	.	+	0	ID=cds-YP_068036.1;Parent=rna-HAdVE_gp07-3;Dbxref=Genbank:YP_068036.1,GeneID:2958479;Name=YP_068036.1;gbkey=CDS;gene=L4;locus_tag=HAdVE_gp07;product=33K;protein_id=YP_068036.1
+NC_003266.2	RefSeq	CDS	25930	26252	.	+	2	ID=cds-YP_068036.1;Parent=rna-HAdVE_gp07-3;Dbxref=Genbank:YP_068036.1,GeneID:2958479;Name=YP_068036.1;gbkey=CDS;gene=L4;locus_tag=HAdVE_gp07;product=33K;protein_id=YP_068036.1
+NC_003266.2	RefSeq	mRNA	5885	27319	.	+	.	ID=rna-HAdVE_gp07-4;Parent=gene-HAdVE_gp07;Dbxref=GeneID:2958479;gbkey=mRNA;gene=L4;locus_tag=HAdVE_gp07;product=L4 pVIII
+NC_003266.2	RefSeq	exon	5885	5925	.	+	.	ID=exon-HAdVE_gp07-4-1;Parent=rna-HAdVE_gp07-4;Dbxref=GeneID:2958479;gbkey=mRNA;gene=L4;locus_tag=HAdVE_gp07;product=L4 pVIII
+NC_003266.2	RefSeq	exon	6947	7018	.	+	.	ID=exon-HAdVE_gp07-4-2;Parent=rna-HAdVE_gp07-4;Dbxref=GeneID:2958479;gbkey=mRNA;gene=L4;locus_tag=HAdVE_gp07;product=L4 pVIII
+NC_003266.2	RefSeq	exon	9456	9542	.	+	.	ID=exon-HAdVE_gp07-4-3;Parent=rna-HAdVE_gp07-4;Dbxref=GeneID:2958479;gbkey=mRNA;gene=L4;locus_tag=HAdVE_gp07;product=L4 pVIII
+NC_003266.2	RefSeq	exon	26314	27319	.	+	.	ID=exon-HAdVE_gp07-4-4;Parent=rna-HAdVE_gp07-4;Dbxref=GeneID:2958479;gbkey=mRNA;gene=L4;locus_tag=HAdVE_gp07;product=L4 pVIII
+NC_003266.2	RefSeq	CDS	26321	27004	.	+	0	ID=cds-YP_068038.1;Parent=rna-HAdVE_gp07-4;Dbxref=Genbank:YP_068038.1,GeneID:2958479;Name=YP_068038.1;gbkey=CDS;gene=L4;locus_tag=HAdVE_gp07;product=VIII;protein_id=YP_068038.1
+NC_003266.2	RefSeq	polyA_signal_sequence	27314	27319	.	+	.	ID=id-HAdVE_gp07;Parent=gene-HAdVE_gp07;Dbxref=GeneID:2958479;Note=L4;gbkey=regulatory;gene=L4;locus_tag=HAdVE_gp07;regulatory_class=polyA_signal_sequence
+NC_003266.2	RefSeq	gene	5854	21730	.	+	.	ID=gene-HAdVE_gp08;Dbxref=GeneID:2958473;Name=L3;gbkey=Gene;gene=L3;gene_biotype=protein_coding;locus_tag=HAdVE_gp08
+NC_003266.2	RefSeq	mRNA	5885	21730	.	+	.	ID=rna-HAdVE_gp08;Parent=gene-HAdVE_gp08;Dbxref=GeneID:2958473;gbkey=mRNA;gene=L3;locus_tag=HAdVE_gp08;product=L3 pVI
+NC_003266.2	RefSeq	exon	5885	5925	.	+	.	ID=exon-HAdVE_gp08-1;Parent=rna-HAdVE_gp08;Dbxref=GeneID:2958473;gbkey=mRNA;gene=L3;locus_tag=HAdVE_gp08;product=L3 pVI
+NC_003266.2	RefSeq	exon	6947	7018	.	+	.	ID=exon-HAdVE_gp08-2;Parent=rna-HAdVE_gp08;Dbxref=GeneID:2958473;gbkey=mRNA;gene=L3;locus_tag=HAdVE_gp08;product=L3 pVI
+NC_003266.2	RefSeq	exon	9456	9542	.	+	.	ID=exon-HAdVE_gp08-3;Parent=rna-HAdVE_gp08;Dbxref=GeneID:2958473;gbkey=mRNA;gene=L3;locus_tag=HAdVE_gp08;product=L3 pVI
+NC_003266.2	RefSeq	exon	17409	21730	.	+	.	ID=exon-HAdVE_gp08-4;Parent=rna-HAdVE_gp08;Dbxref=GeneID:2958473;gbkey=mRNA;gene=L3;locus_tag=HAdVE_gp08;product=L3 pVI
+NC_003266.2	RefSeq	CDS	17413	18141	.	+	0	ID=cds-YP_068031.1;Parent=rna-HAdVE_gp08;Dbxref=Genbank:YP_068031.1,GeneID:2958473;Name=YP_068031.1;gbkey=CDS;gene=L3;locus_tag=HAdVE_gp08;product=pVI;protein_id=YP_068031.1
+NC_003266.2	RefSeq	mRNA	5885	21730	.	+	.	ID=rna-HAdVE_gp08-2;Parent=gene-HAdVE_gp08;Dbxref=GeneID:2958473;gbkey=mRNA;gene=L3;locus_tag=HAdVE_gp08;product=L3 hexon
+NC_003266.2	RefSeq	exon	5885	5925	.	+	.	ID=exon-HAdVE_gp08-2-1;Parent=rna-HAdVE_gp08-2;Dbxref=GeneID:2958473;gbkey=mRNA;gene=L3;locus_tag=HAdVE_gp08;product=L3 hexon
+NC_003266.2	RefSeq	exon	6947	7018	.	+	.	ID=exon-HAdVE_gp08-2-2;Parent=rna-HAdVE_gp08-2;Dbxref=GeneID:2958473;gbkey=mRNA;gene=L3;locus_tag=HAdVE_gp08;product=L3 hexon
+NC_003266.2	RefSeq	exon	9456	9542	.	+	.	ID=exon-HAdVE_gp08-2-3;Parent=rna-HAdVE_gp08-2;Dbxref=GeneID:2958473;gbkey=mRNA;gene=L3;locus_tag=HAdVE_gp08;product=L3 hexon
+NC_003266.2	RefSeq	exon	18208	21730	.	+	.	ID=exon-HAdVE_gp08-2-4;Parent=rna-HAdVE_gp08-2;Dbxref=GeneID:2958473;gbkey=mRNA;gene=L3;locus_tag=HAdVE_gp08;product=L3 hexon
+NC_003266.2	RefSeq	CDS	18248	21058	.	+	0	ID=cds-YP_068032.1;Parent=rna-HAdVE_gp08-2;Dbxref=Genbank:YP_068032.1,GeneID:2958473;Name=YP_068032.1;gbkey=CDS;gene=L3;locus_tag=HAdVE_gp08;product=hexon;protein_id=YP_068032.1
+NC_003266.2	RefSeq	mRNA	5885	21730	.	+	.	ID=rna-HAdVE_gp08-3;Parent=gene-HAdVE_gp08;Dbxref=GeneID:2958473;gbkey=mRNA;gene=L3;locus_tag=HAdVE_gp08;product=L3 protease
+NC_003266.2	RefSeq	exon	5885	5925	.	+	.	ID=exon-HAdVE_gp08-3-1;Parent=rna-HAdVE_gp08-3;Dbxref=GeneID:2958473;gbkey=mRNA;gene=L3;locus_tag=HAdVE_gp08;product=L3 protease
+NC_003266.2	RefSeq	exon	6947	7018	.	+	.	ID=exon-HAdVE_gp08-3-2;Parent=rna-HAdVE_gp08-3;Dbxref=GeneID:2958473;gbkey=mRNA;gene=L3;locus_tag=HAdVE_gp08;product=L3 protease
+NC_003266.2	RefSeq	exon	9456	9542	.	+	.	ID=exon-HAdVE_gp08-3-3;Parent=rna-HAdVE_gp08-3;Dbxref=GeneID:2958473;gbkey=mRNA;gene=L3;locus_tag=HAdVE_gp08;product=L3 protease
+NC_003266.2	RefSeq	exon	21039	21730	.	+	.	ID=exon-HAdVE_gp08-3-4;Parent=rna-HAdVE_gp08-3;Dbxref=GeneID:2958473;gbkey=mRNA;gene=L3;locus_tag=HAdVE_gp08;product=L3 protease
+NC_003266.2	RefSeq	CDS	21082	21702	.	+	0	ID=cds-YP_068033.1;Parent=rna-HAdVE_gp08-3;Dbxref=Genbank:YP_068033.1,GeneID:2958473;Name=YP_068033.1;gbkey=CDS;gene=L3;locus_tag=HAdVE_gp08;product=protease;protein_id=YP_068033.1
+NC_003266.2	RefSeq	polyA_signal_sequence	21725	21730	.	+	.	ID=id-HAdVE_gp08;Parent=gene-HAdVE_gp08;Dbxref=GeneID:2958473;Note=L3;gbkey=regulatory;gene=L3;locus_tag=HAdVE_gp08;regulatory_class=polyA_signal_sequence
+NC_003266.2	RefSeq	gene	5854	17362	.	+	.	ID=gene-HAdVE_gp09;Dbxref=GeneID:2958475;Name=L2;gbkey=Gene;gene=L2;gene_biotype=protein_coding;locus_tag=HAdVE_gp09
+NC_003266.2	RefSeq	mRNA	5885	17362	.	+	.	ID=rna-HAdVE_gp09;Parent=gene-HAdVE_gp09;Dbxref=GeneID:2958475;gbkey=mRNA;gene=L2;locus_tag=HAdVE_gp09;product=L2 III
+NC_003266.2	RefSeq	exon	5885	5925	.	+	.	ID=exon-HAdVE_gp09-1;Parent=rna-HAdVE_gp09;Dbxref=GeneID:2958475;gbkey=mRNA;gene=L2;locus_tag=HAdVE_gp09;product=L2 III
+NC_003266.2	RefSeq	exon	6947	7018	.	+	.	ID=exon-HAdVE_gp09-2;Parent=rna-HAdVE_gp09;Dbxref=GeneID:2958475;gbkey=mRNA;gene=L2;locus_tag=HAdVE_gp09;product=L2 III
+NC_003266.2	RefSeq	exon	9456	9542	.	+	.	ID=exon-HAdVE_gp09-3;Parent=rna-HAdVE_gp09;Dbxref=GeneID:2958475;gbkey=mRNA;gene=L2;locus_tag=HAdVE_gp09;product=L2 III
+NC_003266.2	RefSeq	exon	13814	17362	.	+	.	ID=exon-HAdVE_gp09-4;Parent=rna-HAdVE_gp09;Dbxref=GeneID:2958475;gbkey=mRNA;gene=L2;locus_tag=HAdVE_gp09;product=L2 III
+NC_003266.2	RefSeq	CDS	13815	15422	.	+	0	ID=cds-YP_068027.1;Parent=rna-HAdVE_gp09;Dbxref=Genbank:YP_068027.1,GeneID:2958475;Name=YP_068027.1;gbkey=CDS;gene=L2;locus_tag=HAdVE_gp09;product=III;protein_id=YP_068027.1
+NC_003266.2	RefSeq	mRNA	5885	17362	.	+	.	ID=rna-HAdVE_gp09-2;Parent=gene-HAdVE_gp09;Dbxref=GeneID:2958475;gbkey=mRNA;gene=L2;locus_tag=HAdVE_gp09;product=L2 pVII
+NC_003266.2	RefSeq	exon	5885	5925	.	+	.	ID=exon-HAdVE_gp09-2-1;Parent=rna-HAdVE_gp09-2;Dbxref=GeneID:2958475;gbkey=mRNA;gene=L2;locus_tag=HAdVE_gp09;product=L2 pVII
+NC_003266.2	RefSeq	exon	6947	7018	.	+	.	ID=exon-HAdVE_gp09-2-2;Parent=rna-HAdVE_gp09-2;Dbxref=GeneID:2958475;gbkey=mRNA;gene=L2;locus_tag=HAdVE_gp09;product=L2 pVII
+NC_003266.2	RefSeq	exon	9456	9542	.	+	.	ID=exon-HAdVE_gp09-2-3;Parent=rna-HAdVE_gp09-2;Dbxref=GeneID:2958475;gbkey=mRNA;gene=L2;locus_tag=HAdVE_gp09;product=L2 pVII
+NC_003266.2	RefSeq	exon	15410	17362	.	+	.	ID=exon-HAdVE_gp09-2-4;Parent=rna-HAdVE_gp09-2;Dbxref=GeneID:2958475;gbkey=mRNA;gene=L2;locus_tag=HAdVE_gp09;product=L2 pVII
+NC_003266.2	RefSeq	CDS	15426	16007	.	+	0	ID=cds-YP_068028.1;Parent=rna-HAdVE_gp09-2;Dbxref=Genbank:YP_068028.1,GeneID:2958475;Name=YP_068028.1;gbkey=CDS;gene=L2;locus_tag=HAdVE_gp09;product=pVII;protein_id=YP_068028.1
+NC_003266.2	RefSeq	mRNA	5885	17362	.	+	.	ID=rna-HAdVE_gp09-3;Parent=gene-HAdVE_gp09;Dbxref=GeneID:2958475;gbkey=mRNA;gene=L2;locus_tag=HAdVE_gp09;product=L2 V
+NC_003266.2	RefSeq	exon	5885	5925	.	+	.	ID=exon-HAdVE_gp09-3-1;Parent=rna-HAdVE_gp09-3;Dbxref=GeneID:2958475;gbkey=mRNA;gene=L2;locus_tag=HAdVE_gp09;product=L2 V
+NC_003266.2	RefSeq	exon	6947	7018	.	+	.	ID=exon-HAdVE_gp09-3-2;Parent=rna-HAdVE_gp09-3;Dbxref=GeneID:2958475;gbkey=mRNA;gene=L2;locus_tag=HAdVE_gp09;product=L2 V
+NC_003266.2	RefSeq	exon	9456	9542	.	+	.	ID=exon-HAdVE_gp09-3-3;Parent=rna-HAdVE_gp09-3;Dbxref=GeneID:2958475;gbkey=mRNA;gene=L2;locus_tag=HAdVE_gp09;product=L2 V
+NC_003266.2	RefSeq	exon	16041	17362	.	+	.	ID=exon-HAdVE_gp09-3-4;Parent=rna-HAdVE_gp09-3;Dbxref=GeneID:2958475;gbkey=mRNA;gene=L2;locus_tag=HAdVE_gp09;product=L2 V
+NC_003266.2	RefSeq	CDS	16055	17080	.	+	0	ID=cds-YP_068029.1;Parent=rna-HAdVE_gp09-3;Dbxref=Genbank:YP_068029.1,GeneID:2958475;Name=YP_068029.1;gbkey=CDS;gene=L2;locus_tag=HAdVE_gp09;product=V;protein_id=YP_068029.1
+NC_003266.2	RefSeq	mRNA	5885	17362	.	+	.	ID=rna-HAdVE_gp09-4;Parent=gene-HAdVE_gp09;Dbxref=GeneID:2958475;gbkey=mRNA;gene=L2;locus_tag=HAdVE_gp09;product=L2 pX
+NC_003266.2	RefSeq	exon	5885	5925	.	+	.	ID=exon-HAdVE_gp09-4-1;Parent=rna-HAdVE_gp09-4;Dbxref=GeneID:2958475;gbkey=mRNA;gene=L2;locus_tag=HAdVE_gp09;product=L2 pX
+NC_003266.2	RefSeq	exon	6947	7018	.	+	.	ID=exon-HAdVE_gp09-4-2;Parent=rna-HAdVE_gp09-4;Dbxref=GeneID:2958475;gbkey=mRNA;gene=L2;locus_tag=HAdVE_gp09;product=L2 pX
+NC_003266.2	RefSeq	exon	9456	9542	.	+	.	ID=exon-HAdVE_gp09-4-3;Parent=rna-HAdVE_gp09-4;Dbxref=GeneID:2958475;gbkey=mRNA;gene=L2;locus_tag=HAdVE_gp09;product=L2 pX
+NC_003266.2	RefSeq	exon	17101	17362	.	+	.	ID=exon-HAdVE_gp09-4-4;Parent=rna-HAdVE_gp09-4;Dbxref=GeneID:2958475;gbkey=mRNA;gene=L2;locus_tag=HAdVE_gp09;product=L2 pX
+NC_003266.2	RefSeq	CDS	17103	17336	.	+	0	ID=cds-YP_068030.1;Parent=rna-HAdVE_gp09-4;Dbxref=Genbank:YP_068030.1,GeneID:2958475;Name=YP_068030.1;gbkey=CDS;gene=L2;locus_tag=HAdVE_gp09;product=pX;protein_id=YP_068030.1
+NC_003266.2	RefSeq	polyA_signal_sequence	17357	17362	.	+	.	ID=id-HAdVE_gp09;Parent=gene-HAdVE_gp09;Dbxref=GeneID:2958475;Note=L2;gbkey=regulatory;gene=L2;locus_tag=HAdVE_gp09;regulatory_class=polyA_signal_sequence
+NC_003266.2	RefSeq	gene	5854	13754	.	+	.	ID=gene-HAdVE_gp10;Dbxref=GeneID:2958472;Name=L1;gbkey=Gene;gene=L1;gene_biotype=protein_coding;locus_tag=HAdVE_gp10
+NC_003266.2	RefSeq	mRNA	5885	13754	.	+	.	ID=rna-HAdVE_gp10;Parent=gene-HAdVE_gp10;Dbxref=GeneID:2958472;gbkey=mRNA;gene=L1;locus_tag=HAdVE_gp10;product=L1 52K
+NC_003266.2	RefSeq	exon	5885	5925	.	+	.	ID=exon-HAdVE_gp10-1;Parent=rna-HAdVE_gp10;Dbxref=GeneID:2958472;gbkey=mRNA;gene=L1;locus_tag=HAdVE_gp10;product=L1 52K
+NC_003266.2	RefSeq	exon	6947	7018	.	+	.	ID=exon-HAdVE_gp10-2;Parent=rna-HAdVE_gp10;Dbxref=GeneID:2958472;gbkey=mRNA;gene=L1;locus_tag=HAdVE_gp10;product=L1 52K
+NC_003266.2	RefSeq	exon	9456	9542	.	+	.	ID=exon-HAdVE_gp10-3;Parent=rna-HAdVE_gp10;Dbxref=GeneID:2958472;gbkey=mRNA;gene=L1;locus_tag=HAdVE_gp10;product=L1 52K
+NC_003266.2	RefSeq	exon	10765	13754	.	+	.	ID=exon-HAdVE_gp10-4;Parent=rna-HAdVE_gp10;Dbxref=GeneID:2958472;gbkey=mRNA;gene=L1;locus_tag=HAdVE_gp10;product=L1 52K
+NC_003266.2	RefSeq	CDS	10765	11937	.	+	0	ID=cds-YP_068025.1;Parent=rna-HAdVE_gp10;Dbxref=Genbank:YP_068025.1,GeneID:2958472;Name=YP_068025.1;gbkey=CDS;gene=L1;locus_tag=HAdVE_gp10;product=52K;protein_id=YP_068025.1
+NC_003266.2	RefSeq	mRNA	5885	13754	.	+	.	ID=rna-HAdVE_gp10-2;Parent=gene-HAdVE_gp10;Dbxref=GeneID:2958472;gbkey=mRNA;gene=L1;locus_tag=HAdVE_gp10;product=L1 pIIIa
+NC_003266.2	RefSeq	exon	5885	5925	.	+	.	ID=exon-HAdVE_gp10-2-1;Parent=rna-HAdVE_gp10-2;Dbxref=GeneID:2958472;gbkey=mRNA;gene=L1;locus_tag=HAdVE_gp10;product=L1 pIIIa
+NC_003266.2	RefSeq	exon	6947	7018	.	+	.	ID=exon-HAdVE_gp10-2-2;Parent=rna-HAdVE_gp10-2;Dbxref=GeneID:2958472;gbkey=mRNA;gene=L1;locus_tag=HAdVE_gp10;product=L1 pIIIa
+NC_003266.2	RefSeq	exon	9456	9542	.	+	.	ID=exon-HAdVE_gp10-2-3;Parent=rna-HAdVE_gp10-2;Dbxref=GeneID:2958472;gbkey=mRNA;gene=L1;locus_tag=HAdVE_gp10;product=L1 pIIIa
+NC_003266.2	RefSeq	exon	11961	13754	.	+	.	ID=exon-HAdVE_gp10-2-4;Parent=rna-HAdVE_gp10-2;Dbxref=GeneID:2958472;gbkey=mRNA;gene=L1;locus_tag=HAdVE_gp10;product=L1 pIIIa
+NC_003266.2	RefSeq	CDS	11961	13736	.	+	0	ID=cds-YP_068026.1;Parent=rna-HAdVE_gp10-2;Dbxref=Genbank:YP_068026.1,GeneID:2958472;Name=YP_068026.1;gbkey=CDS;gene=L1;locus_tag=HAdVE_gp10;product=pIIIa;protein_id=YP_068026.1
+NC_003266.2	RefSeq	polyA_signal_sequence	13749	13754	.	+	.	ID=id-HAdVE_gp10;Parent=gene-HAdVE_gp10;Dbxref=GeneID:2958472;Note=L1;gbkey=regulatory;gene=L1;locus_tag=HAdVE_gp10;regulatory_class=polyA_signal_sequence
+NC_003266.2	RefSeq	TATA_box	5854	5860	.	+	.	ID=id-NC_003266.2:5854..5860;Note=L;gbkey=regulatory;regulatory_class=TATA_box
+NC_003266.2	RefSeq	transcript	10356	10514	.	+	.	ID=rna-NC_003266.2:10356..10514;gbkey=misc_RNA;product=VAI
+NC_003266.2	RefSeq	exon	10356	10514	.	+	.	ID=exon-NC_003266.2:10356..10514-1;Parent=rna-NC_003266.2:10356..10514;gbkey=misc_RNA;product=VAI
+NC_003266.2	RefSeq	transcript	10575	10740	.	+	.	ID=rna-NC_003266.2:10575..10740;gbkey=misc_RNA;product=VAII
+NC_003266.2	RefSeq	exon	10575	10740	.	+	.	ID=exon-NC_003266.2:10575..10740-1;Parent=rna-NC_003266.2:10575..10740;gbkey=misc_RNA;product=VAII
+NC_003266.2	RefSeq	gene	21722	26237	.	-	.	ID=gene-HAdVE_gp11;Dbxref=GeneID:2958469;Name=E2A;gbkey=Gene;gene=E2A;gene_biotype=protein_coding;locus_tag=HAdVE_gp11
+NC_003266.2	RefSeq	mRNA	21722	26237	.	-	.	ID=rna-HAdVE_gp11;Parent=gene-HAdVE_gp11;Dbxref=GeneID:2958469;gbkey=mRNA;gene=E2A;locus_tag=HAdVE_gp11;product=DBP
+NC_003266.2	RefSeq	exon	26150	26237	.	-	.	ID=exon-HAdVE_gp11-1;Parent=rna-HAdVE_gp11;Dbxref=GeneID:2958469;gbkey=mRNA;gene=E2A;locus_tag=HAdVE_gp11;product=DBP
+NC_003266.2	RefSeq	exon	23954	24030	.	-	.	ID=exon-HAdVE_gp11-2;Parent=rna-HAdVE_gp11;Dbxref=GeneID:2958469;gbkey=mRNA;gene=E2A;locus_tag=HAdVE_gp11;product=DBP
+NC_003266.2	RefSeq	exon	21722	23321	.	-	.	ID=exon-HAdVE_gp11-3;Parent=rna-HAdVE_gp11;Dbxref=GeneID:2958469;gbkey=mRNA;gene=E2A;locus_tag=HAdVE_gp11;product=DBP
+NC_003266.2	RefSeq	CDS	21774	23312	.	-	0	ID=cds-YP_068034.1;Parent=rna-HAdVE_gp11;Dbxref=Genbank:YP_068034.1,GeneID:2958469;Name=YP_068034.1;gbkey=CDS;gene=E2A;locus_tag=HAdVE_gp11;product=DBP;protein_id=YP_068034.1
+NC_003266.2	RefSeq	mRNA	21722	25195	.	-	.	ID=rna-HAdVE_gp11-2;Parent=gene-HAdVE_gp11;Dbxref=GeneID:2958469;gbkey=mRNA;gene=E2A;locus_tag=HAdVE_gp11;product=DBP late
+NC_003266.2	RefSeq	exon	25125	25195	.	-	.	ID=exon-HAdVE_gp11-2-1;Parent=rna-HAdVE_gp11-2;Dbxref=GeneID:2958469;gbkey=mRNA;gene=E2A;locus_tag=HAdVE_gp11;product=DBP late
+NC_003266.2	RefSeq	exon	23954	24030	.	-	.	ID=exon-HAdVE_gp11-2-2;Parent=rna-HAdVE_gp11-2;Dbxref=GeneID:2958469;gbkey=mRNA;gene=E2A;locus_tag=HAdVE_gp11;product=DBP late
+NC_003266.2	RefSeq	exon	21722	23321	.	-	.	ID=exon-HAdVE_gp11-2-3;Parent=rna-HAdVE_gp11-2;Dbxref=GeneID:2958469;gbkey=mRNA;gene=E2A;locus_tag=HAdVE_gp11;product=DBP late
+NC_003266.2	RefSeq	polyA_signal_sequence	21722	21727	.	-	.	ID=id-HAdVE_gp11;Parent=gene-HAdVE_gp11;Dbxref=GeneID:2958469;Note=E2A;gbkey=regulatory;gene=E2A;locus_tag=HAdVE_gp11;regulatory_class=polyA_signal_sequence
+NC_003266.2	RefSeq	polyA_signal_sequence	21767	21772	.	-	.	ID=id-HAdVE_gp11-2;Parent=gene-HAdVE_gp11;Dbxref=GeneID:2958469;Note=E2A;gbkey=regulatory;gene=E2A;locus_tag=HAdVE_gp11;regulatory_class=polyA_signal_sequence
+NC_003266.2	RefSeq	gene	26686	31469	.	+	.	ID=gene-HAdVE_gp12;Dbxref=GeneID:2958477;Name=E3;Note=splice donor not experimentally confirmed;gbkey=Gene;gene=E3;gene_biotype=protein_coding;locus_tag=HAdVE_gp12
+NC_003266.2	RefSeq	mRNA	26715	31469	.	+	.	ID=rna-HAdVE_gp12;Parent=gene-HAdVE_gp12;Dbxref=GeneID:2958477;gbkey=mRNA;gene=E3;locus_tag=HAdVE_gp12;product=E3 12.5
+NC_003266.2	RefSeq	exon	26715	26737	.	+	.	ID=exon-HAdVE_gp12-1;Parent=rna-HAdVE_gp12;Dbxref=GeneID:2958477;gbkey=mRNA;gene=E3;locus_tag=HAdVE_gp12;product=E3 12.5
+NC_003266.2	RefSeq	exon	26980	31469	.	+	.	ID=exon-HAdVE_gp12-2;Parent=rna-HAdVE_gp12;Dbxref=GeneID:2958477;gbkey=mRNA;gene=E3;locus_tag=HAdVE_gp12;product=E3 12.5
+NC_003266.2	RefSeq	CDS	27005	27325	.	+	0	ID=cds-YP_068039.1;Parent=rna-HAdVE_gp12;Dbxref=Genbank:YP_068039.1,GeneID:2958477;Name=YP_068039.1;gbkey=CDS;gene=E3;locus_tag=HAdVE_gp12;product=E3 12.5K;protein_id=YP_068039.1
+NC_003266.2	RefSeq	mRNA	26715	31469	.	+	.	ID=rna-HAdVE_gp12-2;Parent=gene-HAdVE_gp12;Dbxref=GeneID:2958477;gbkey=mRNA;gene=E3;locus_tag=HAdVE_gp12;product=E3 CR1-alpha1
+NC_003266.2	RefSeq	exon	26715	26737	.	+	.	ID=exon-HAdVE_gp12-2-1;Parent=rna-HAdVE_gp12-2;Dbxref=GeneID:2958477;gbkey=mRNA;gene=E3;locus_tag=HAdVE_gp12;product=E3 CR1-alpha1
+NC_003266.2	RefSeq	exon	27199	31469	.	+	.	ID=exon-HAdVE_gp12-2-2;Parent=rna-HAdVE_gp12-2;Dbxref=GeneID:2958477;gbkey=mRNA;gene=E3;locus_tag=HAdVE_gp12;product=E3 CR1-alpha1
+NC_003266.2	RefSeq	CDS	27279	27911	.	+	0	ID=cds-YP_068040.1;Parent=rna-HAdVE_gp12-2;Dbxref=Genbank:YP_068040.1,GeneID:2958477;Name=YP_068040.1;gbkey=CDS;gene=E3;locus_tag=HAdVE_gp12;product=E3 CR1-alpha1;protein_id=YP_068040.1
+NC_003266.2	RefSeq	mRNA	26715	31469	.	+	.	ID=rna-HAdVE_gp12-3;Parent=gene-HAdVE_gp12;Dbxref=GeneID:2958477;gbkey=mRNA;gene=E3;locus_tag=HAdVE_gp12;product=E3 gp19K
+NC_003266.2	RefSeq	exon	26715	26737	.	+	.	ID=exon-HAdVE_gp12-3-1;Parent=rna-HAdVE_gp12-3;Dbxref=GeneID:2958477;gbkey=mRNA;gene=E3;locus_tag=HAdVE_gp12;product=E3 gp19K
+NC_003266.2	RefSeq	exon	27868	31469	.	+	.	ID=exon-HAdVE_gp12-3-2;Parent=rna-HAdVE_gp12-3;Dbxref=GeneID:2958477;gbkey=mRNA;gene=E3;locus_tag=HAdVE_gp12;product=E3 gp19K
+NC_003266.2	RefSeq	CDS	27893	28417	.	+	0	ID=cds-YP_068041.1;Parent=rna-HAdVE_gp12-3;Dbxref=Genbank:YP_068041.1,GeneID:2958477;Name=YP_068041.1;gbkey=CDS;gene=E3;locus_tag=HAdVE_gp12;product=E3 gp19K;protein_id=YP_068041.1
+NC_003266.2	RefSeq	mRNA	26715	31469	.	+	.	ID=rna-HAdVE_gp12-4;Parent=gene-HAdVE_gp12;Dbxref=GeneID:2958477;gbkey=mRNA;gene=E3;locus_tag=HAdVE_gp12;product=E3 CR1-beta1
+NC_003266.2	RefSeq	exon	26715	26737	.	+	.	ID=exon-HAdVE_gp12-4-1;Parent=rna-HAdVE_gp12-4;Dbxref=GeneID:2958477;gbkey=mRNA;gene=E3;locus_tag=HAdVE_gp12;product=E3 CR1-beta1
+NC_003266.2	RefSeq	exon	28446	31469	.	+	.	ID=exon-HAdVE_gp12-4-2;Parent=rna-HAdVE_gp12-4;Dbxref=GeneID:2958477;gbkey=mRNA;gene=E3;locus_tag=HAdVE_gp12;product=E3 CR1-beta1
+NC_003266.2	RefSeq	CDS	28449	29111	.	+	0	ID=cds-YP_068042.1;Parent=rna-HAdVE_gp12-4;Dbxref=Genbank:YP_068042.1,GeneID:2958477;Name=YP_068042.1;gbkey=CDS;gene=E3;locus_tag=HAdVE_gp12;product=E3 CR1-beta1;protein_id=YP_068042.1
+NC_003266.2	RefSeq	mRNA	26715	31469	.	+	.	ID=rna-HAdVE_gp12-5;Parent=gene-HAdVE_gp12;Dbxref=GeneID:2958477;gbkey=mRNA;gene=E3;locus_tag=HAdVE_gp12;product=E3 CR1-delta1
+NC_003266.2	RefSeq	exon	26715	26737	.	+	.	ID=exon-HAdVE_gp12-5-1;Parent=rna-HAdVE_gp12-5;Dbxref=GeneID:2958477;gbkey=mRNA;gene=E3;locus_tag=HAdVE_gp12;product=E3 CR1-delta1
+NC_003266.2	RefSeq	exon	29436	31469	.	+	.	ID=exon-HAdVE_gp12-5-2;Parent=rna-HAdVE_gp12-5;Dbxref=GeneID:2958477;gbkey=mRNA;gene=E3;locus_tag=HAdVE_gp12;product=E3 CR1-delta1
+NC_003266.2	RefSeq	CDS	29440	30264	.	+	0	ID=cds-YP_068043.1;Parent=rna-HAdVE_gp12-5;Dbxref=Genbank:YP_068043.1,GeneID:2958477;Name=YP_068043.1;gbkey=CDS;gene=E3;locus_tag=HAdVE_gp12;product=E3 CR1-delta1;protein_id=YP_068043.1
+NC_003266.2	RefSeq	mRNA	26715	31469	.	+	.	ID=rna-HAdVE_gp12-6;Parent=gene-HAdVE_gp12;Dbxref=GeneID:2958477;gbkey=mRNA;gene=E3;locus_tag=HAdVE_gp12;product=E3 RID-alpha
+NC_003266.2	RefSeq	exon	26715	26737	.	+	.	ID=exon-HAdVE_gp12-6-1;Parent=rna-HAdVE_gp12-6;Dbxref=GeneID:2958477;gbkey=mRNA;gene=E3;locus_tag=HAdVE_gp12;product=E3 RID-alpha
+NC_003266.2	RefSeq	exon	30257	31469	.	+	.	ID=exon-HAdVE_gp12-6-2;Parent=rna-HAdVE_gp12-6;Dbxref=GeneID:2958477;gbkey=mRNA;gene=E3;locus_tag=HAdVE_gp12;product=E3 RID-alpha
+NC_003266.2	RefSeq	CDS	30273	30548	.	+	0	ID=cds-YP_068044.1;Parent=rna-HAdVE_gp12-6;Dbxref=Genbank:YP_068044.1,GeneID:2958477;Name=YP_068044.1;gbkey=CDS;gene=E3;locus_tag=HAdVE_gp12;product=E3 RID-alpha;protein_id=YP_068044.1
+NC_003266.2	RefSeq	mRNA	26715	31469	.	+	.	ID=rna-HAdVE_gp12-7;Parent=gene-HAdVE_gp12;Dbxref=GeneID:2958477;gbkey=mRNA;gene=E3;locus_tag=HAdVE_gp12;product=E3 RID-beta
+NC_003266.2	RefSeq	exon	26715	26737	.	+	.	ID=exon-HAdVE_gp12-7-1;Parent=rna-HAdVE_gp12-7;Dbxref=GeneID:2958477;gbkey=mRNA;gene=E3;locus_tag=HAdVE_gp12;product=E3 RID-beta
+NC_003266.2	RefSeq	exon	30539	31469	.	+	.	ID=exon-HAdVE_gp12-7-2;Parent=rna-HAdVE_gp12-7;Dbxref=GeneID:2958477;gbkey=mRNA;gene=E3;locus_tag=HAdVE_gp12;product=E3 RID-beta
+NC_003266.2	RefSeq	CDS	30554	30994	.	+	0	ID=cds-YP_068045.1;Parent=rna-HAdVE_gp12-7;Dbxref=Genbank:YP_068045.1,GeneID:2958477;Name=YP_068045.1;gbkey=CDS;gene=E3;locus_tag=HAdVE_gp12;product=E3 RID-beta;protein_id=YP_068045.1
+NC_003266.2	RefSeq	mRNA	26715	31469	.	+	.	ID=rna-HAdVE_gp12-8;Parent=gene-HAdVE_gp12;Dbxref=GeneID:2958477;gbkey=mRNA;gene=E3;locus_tag=HAdVE_gp12;product=E3 14.7K
+NC_003266.2	RefSeq	exon	26715	26737	.	+	.	ID=exon-HAdVE_gp12-8-1;Parent=rna-HAdVE_gp12-8;Dbxref=GeneID:2958477;gbkey=mRNA;gene=E3;locus_tag=HAdVE_gp12;product=E3 14.7K
+NC_003266.2	RefSeq	exon	30964	31469	.	+	.	ID=exon-HAdVE_gp12-8-2;Parent=rna-HAdVE_gp12-8;Dbxref=GeneID:2958477;gbkey=mRNA;gene=E3;locus_tag=HAdVE_gp12;product=E3 14.7K
+NC_003266.2	RefSeq	CDS	30987	31388	.	+	0	ID=cds-YP_068046.1;Parent=rna-HAdVE_gp12-8;Dbxref=Genbank:YP_068046.1,GeneID:2958477;Name=YP_068046.1;gbkey=CDS;gene=E3;locus_tag=HAdVE_gp12;product=E3 14.7K;protein_id=YP_068046.1
+NC_003266.2	RefSeq	TATA_box	26686	26692	.	+	.	ID=id-HAdVE_gp12;Parent=gene-HAdVE_gp12;Dbxref=GeneID:2958477;Note=E3;gbkey=regulatory;gene=E3;locus_tag=HAdVE_gp12;regulatory_class=TATA_box
+NC_003266.2	RefSeq	polyA_signal_sequence	31428	31433	.	+	.	ID=id-HAdVE_gp12-2;Parent=gene-HAdVE_gp12;Dbxref=GeneID:2958477;Note=E3;gbkey=regulatory;gene=E3;locus_tag=HAdVE_gp12;regulatory_class=polyA_signal_sequence
+NC_003266.2	RefSeq	polyA_signal_sequence	31435	31440	.	+	.	ID=id-HAdVE_gp12-3;Parent=gene-HAdVE_gp12;Dbxref=GeneID:2958477;Note=E3;gbkey=regulatory;gene=E3;locus_tag=HAdVE_gp12;regulatory_class=polyA_signal_sequence
+NC_003266.2	RefSeq	polyA_signal_sequence	31464	31469	.	+	.	ID=id-HAdVE_gp12-4;Parent=gene-HAdVE_gp12;Dbxref=GeneID:2958477;Note=E3;gbkey=regulatory;gene=E3;locus_tag=HAdVE_gp12;regulatory_class=polyA_signal_sequence
+NC_003266.2	RefSeq	sequence_feature	29118	29420	.	+	.	ID=id-NC_003266.2:29118..29420;Note=residual non-functional 3' region of CR1-gamma1 coding region%3B lacks splice acceptor and 5' region;gbkey=misc_feature
+NC_003266.2	RefSeq	CDS	31481	31632	.	-	0	ID=cds-YP_068047.1;Dbxref=Genbank:YP_068047.1;Name=YP_068047.1;Note=spliced to an unidentified protein-coding region downstream;gbkey=CDS;partial=true;product=U exon;protein_id=YP_068047.1;start_range=.,31481
+NC_003266.2	RefSeq	gene	31481	31632	.	-	.	ID=gene-HAdVE_gp13;Dbxref=GeneID:3119908;Name=U;gbkey=Gene;gene=U;gene_biotype=other;locus_tag=HAdVE_gp13;partial=true
+NC_003266.2	RefSeq	gene	33002	35692	.	-	.	ID=gene-HAdVE_gp14;Dbxref=GeneID:2958467;Name=E4;gbkey=Gene;gene=E4;gene_biotype=protein_coding;locus_tag=HAdVE_gp14
+NC_003266.2	RefSeq	mRNA	33002	35662	.	-	.	ID=rna-HAdVE_gp14;Parent=gene-HAdVE_gp14;Dbxref=GeneID:2958467;gbkey=mRNA;gene=E4;locus_tag=HAdVE_gp14;product=E4 ORF6/7
+NC_003266.2	RefSeq	exon	35618	35662	.	-	.	ID=exon-HAdVE_gp14-1;Parent=rna-HAdVE_gp14;Dbxref=GeneID:2958467;gbkey=mRNA;gene=E4;locus_tag=HAdVE_gp14;product=E4 ORF6/7
+NC_003266.2	RefSeq	exon	33996	34192	.	-	.	ID=exon-HAdVE_gp14-2;Parent=rna-HAdVE_gp14;Dbxref=GeneID:2958467;gbkey=mRNA;gene=E4;locus_tag=HAdVE_gp14;product=E4 ORF6/7
+NC_003266.2	RefSeq	exon	33002	33273	.	-	.	ID=exon-HAdVE_gp14-3;Parent=rna-HAdVE_gp14;Dbxref=GeneID:2958467;gbkey=mRNA;gene=E4;locus_tag=HAdVE_gp14;product=E4 ORF6/7
+NC_003266.2	RefSeq	CDS	33996	34169	.	-	0	ID=cds-YP_068049.1;Parent=rna-HAdVE_gp14;Dbxref=Genbank:YP_068049.1,GeneID:2958467;Name=YP_068049.1;gbkey=CDS;gene=E4;locus_tag=HAdVE_gp14;product=E4 ORF6/7;protein_id=YP_068049.1
+NC_003266.2	RefSeq	CDS	33022	33273	.	-	0	ID=cds-YP_068049.1;Parent=rna-HAdVE_gp14;Dbxref=Genbank:YP_068049.1,GeneID:2958467;Name=YP_068049.1;gbkey=CDS;gene=E4;locus_tag=HAdVE_gp14;product=E4 ORF6/7;protein_id=YP_068049.1
+NC_003266.2	RefSeq	mRNA	33002	35662	.	-	.	ID=rna-HAdVE_gp14-2;Parent=gene-HAdVE_gp14;Dbxref=GeneID:2958467;gbkey=mRNA;gene=E4;locus_tag=HAdVE_gp14;product=E4 34K
+NC_003266.2	RefSeq	exon	35618	35662	.	-	.	ID=exon-HAdVE_gp14-2-1;Parent=rna-HAdVE_gp14-2;Dbxref=GeneID:2958467;gbkey=mRNA;gene=E4;locus_tag=HAdVE_gp14;product=E4 34K
+NC_003266.2	RefSeq	exon	33002	34192	.	-	.	ID=exon-HAdVE_gp14-2-2;Parent=rna-HAdVE_gp14-2;Dbxref=GeneID:2958467;gbkey=mRNA;gene=E4;locus_tag=HAdVE_gp14;product=E4 34K
+NC_003266.2	RefSeq	CDS	33270	34169	.	-	0	ID=cds-YP_068050.1;Parent=rna-HAdVE_gp14-2;Dbxref=Genbank:YP_068050.1,GeneID:2958467;Name=YP_068050.1;gbkey=CDS;gene=E4;locus_tag=HAdVE_gp14;product=E4 34K;protein_id=YP_068050.1
+NC_003266.2	RefSeq	mRNA	33002	35662	.	-	.	ID=rna-HAdVE_gp14-3;Parent=gene-HAdVE_gp14;Dbxref=GeneID:2958467;gbkey=mRNA;gene=E4;locus_tag=HAdVE_gp14;product=E4 ORF4
+NC_003266.2	RefSeq	exon	35618	35662	.	-	.	ID=exon-HAdVE_gp14-3-1;Parent=rna-HAdVE_gp14-3;Dbxref=GeneID:2958467;gbkey=mRNA;gene=E4;locus_tag=HAdVE_gp14;product=E4 ORF4
+NC_003266.2	RefSeq	exon	33002	34512	.	-	.	ID=exon-HAdVE_gp14-3-2;Parent=rna-HAdVE_gp14-3;Dbxref=GeneID:2958467;gbkey=mRNA;gene=E4;locus_tag=HAdVE_gp14;product=E4 ORF4
+NC_003266.2	RefSeq	CDS	34072	34440	.	-	0	ID=cds-YP_068051.1;Parent=rna-HAdVE_gp14-3;Dbxref=Genbank:YP_068051.1,GeneID:2958467;Name=YP_068051.1;gbkey=CDS;gene=E4;locus_tag=HAdVE_gp14;product=E4 ORF4;protein_id=YP_068051.1
+NC_003266.2	RefSeq	mRNA	33002	35662	.	-	.	ID=rna-HAdVE_gp14-4;Parent=gene-HAdVE_gp14;Dbxref=GeneID:2958467;gbkey=mRNA;gene=E4;locus_tag=HAdVE_gp14;product=E4 ORF3
+NC_003266.2	RefSeq	exon	35618	35662	.	-	.	ID=exon-HAdVE_gp14-4-1;Parent=rna-HAdVE_gp14-4;Dbxref=GeneID:2958467;gbkey=mRNA;gene=E4;locus_tag=HAdVE_gp14;product=E4 ORF3
+NC_003266.2	RefSeq	exon	33002	34831	.	-	.	ID=exon-HAdVE_gp14-4-2;Parent=rna-HAdVE_gp14-4;Dbxref=GeneID:2958467;gbkey=mRNA;gene=E4;locus_tag=HAdVE_gp14;product=E4 ORF3
+NC_003266.2	RefSeq	CDS	34449	34802	.	-	0	ID=cds-YP_068052.1;Parent=rna-HAdVE_gp14-4;Dbxref=Genbank:YP_068052.1,GeneID:2958467;Name=YP_068052.1;gbkey=CDS;gene=E4;locus_tag=HAdVE_gp14;product=E4 ORF3;protein_id=YP_068052.1
+NC_003266.2	RefSeq	mRNA	33002	35662	.	-	.	ID=rna-HAdVE_gp14-5;Parent=gene-HAdVE_gp14;Dbxref=GeneID:2958467;gbkey=mRNA;gene=E4;locus_tag=HAdVE_gp14;product=E4 ORF2
+NC_003266.2	RefSeq	exon	35618	35662	.	-	.	ID=exon-HAdVE_gp14-5-1;Parent=rna-HAdVE_gp14-5;Dbxref=GeneID:2958467;gbkey=mRNA;gene=E4;locus_tag=HAdVE_gp14;product=E4 ORF2
+NC_003266.2	RefSeq	exon	33002	35207	.	-	.	ID=exon-HAdVE_gp14-5-2;Parent=rna-HAdVE_gp14-5;Dbxref=GeneID:2958467;gbkey=mRNA;gene=E4;locus_tag=HAdVE_gp14;product=E4 ORF2
+NC_003266.2	RefSeq	CDS	34799	35188	.	-	0	ID=cds-YP_068053.1;Parent=rna-HAdVE_gp14-5;Dbxref=Genbank:YP_068053.1,GeneID:2958467;Name=YP_068053.1;gbkey=CDS;gene=E4;locus_tag=HAdVE_gp14;product=E4 ORF2;protein_id=YP_068053.1
+NC_003266.2	RefSeq	mRNA	33002	35662	.	-	.	ID=rna-HAdVE_gp14-6;Parent=gene-HAdVE_gp14;Dbxref=GeneID:2958467;gbkey=mRNA;gene=E4;locus_tag=HAdVE_gp14;product=E4 ORF1
+NC_003266.2	RefSeq	exon	33002	35662	.	-	.	ID=exon-HAdVE_gp14-6-1;Parent=rna-HAdVE_gp14-6;Dbxref=GeneID:2958467;gbkey=mRNA;gene=E4;locus_tag=HAdVE_gp14;product=E4 ORF1
+NC_003266.2	RefSeq	CDS	35236	35610	.	-	0	ID=cds-YP_068054.1;Parent=rna-HAdVE_gp14-6;Dbxref=Genbank:YP_068054.1,GeneID:2958467;Name=YP_068054.1;gbkey=CDS;gene=E4;locus_tag=HAdVE_gp14;product=E4 ORF1;protein_id=YP_068054.1
+NC_003266.2	RefSeq	polyA_signal_sequence	33002	33007	.	-	.	ID=id-HAdVE_gp14;Parent=gene-HAdVE_gp14;Dbxref=GeneID:2958467;Note=E4;gbkey=regulatory;gene=E4;locus_tag=HAdVE_gp14;regulatory_class=polyA_signal_sequence
+NC_003266.2	RefSeq	TATA_box	35686	35692	.	-	.	ID=id-HAdVE_gp14-2;Parent=gene-HAdVE_gp14;Dbxref=GeneID:2958467;Note=E4;gbkey=regulatory;gene=E4;locus_tag=HAdVE_gp14;regulatory_class=TATA_box
+NC_003266.2	RefSeq	inverted_repeat	35879	35994	.	+	.	ID=id-NC_003266.2:35879..35994;Note=ITR;gbkey=repeat_region;rpt_type=inverted
+

@@ -5,7 +5,8 @@ source /usr/local/etc/profile.d/conda.sh
 
 ## Authors: Logan Voegtly <logan.j.voegtly.ctr@mail.mil> & Kyle Long <kyle.a.long8.ctr@mail.mil> & Gregory Rice <gregory.k.rice.ctr@mail.mil> & Katie Arnold <catherine.e.arnold13.civ@mail.mil>
 ## Last modified: December 7, 2021
-version=v2.1.0
+version=v2.2.0
+## Update: 2.2.0 Add support for user provided references (fasta, gff, and primer bed file)
 ## Update: 2.1.0 Major fixes for align_trim
 ## Update: 2.0.1 Bugfixes
 ## Update: 2.0.0 Rewrite of the script to be more generic for references and use named arguments instead of positional arguments
@@ -35,7 +36,10 @@ Input files are expected to be fastq or fastq.gz format. The reads are expected 
 -p, --protocol              Protocol used to generate library, ie. ARTIC, ARTICv4, QIAseq, YouSeq, shotgun, probes
 
 # User provided Reference:
-# Functionality to be added at a later date
+# Note: All accessions need to match across user provided files
+    --reference-fasta       User provided reference fasta file; Accession needs be the only thing in the headers
+    --reference-gff         User provided reference gff file
+    --primer-bed            User provided primer bed file; This is not required for shotgun or probe protocols
 
 # Read Processing:
 -q, --read-quality          Minimum read quality, default: 20
@@ -127,6 +131,15 @@ is_memory () {
 fi
 }
 
+get_accessions () {
+  fasta_file=$1
+  if [[ -f $fasta_file ]]; then
+    reference_accessions=($(grep ">" "$fasta_file" | cut -f 1 -d " " | cut -f 2 -d ">" ))
+  else
+    print_log "fasta file: $fasta_file not found or does not exist."
+    exit 1
+  fi
+}
 # TODO: Integrate User provided reference files: fasta genome, gff file, primer file
 
 # gets all the args to print to log
@@ -152,6 +165,7 @@ memory="1g"
 
 reference="SARS-CoV-2"
 nomerge=0
+user_reference=0
 
 sample_directory=/mnt/data/
 align_trim_directory=/usr/local/bin/VAIW/align_trim
@@ -185,6 +199,16 @@ while [ -n "$1" ];do
         -r|--reference)
           shift
           reference="$1";;
+        --reference-fasta)
+          shift
+          user_reference=1
+          reference_fasta="$1";;
+        --reference-gff)
+          shift
+          reference_gff="$1";;
+        --primer-bed)
+          shift
+          primer_bed="$1";;
         -p|--protocol)
           shift
           protocol="$1";;
@@ -263,13 +287,31 @@ print_log "\n[ Start processing $sample ]"
 print_log "\n[ Analyzing data in $sample_directory ]"
 
 print_log "\n[ Setting Up Reference Data ]"
+if [[ -f $reference_fasta ]]; then
+  # Set variable for $reference_accessions
+  get_accessions "$reference_fasta"
+  print_log "Reference fasta provided: $reference_fasta with accessions: ${reference_accessions[*]} "
+  if [[ ! -f $reference_gff ]]; then
+    print_log "Reference fasta provided but reference gff, $reference_gff, is not present or not provided."\
+    print_log "$USAGE"
+    exit 1
+  fi
+  print_log "Reference gff provided: $reference_gff"
+  if [[ $protocol == *probes* || $protocol == *shotgun* ]]; then
+    primer_bed="null"
+    min_length=50
+  elif [[ ! -f $primer_bed ]]; then
+    print_log "Primer bed, $primer_bed, file not found or provided when protocol, $protocol, is not shotgun or probes and reference fasta was provided"
+    print_log "$USAGE"
+    exit 1
+  fi
 # Find reference files
-if [[ $reference == "SARS-CoV-2" ]]; then
+elif [[ $reference == "SARS-CoV-2" ]]; then
   print_log "Using reference: $reference"
   reference_dir=/usr/local/bin/VAIW/references/SARS_CoV_2
   reference_fasta="$reference_dir"/SARS_CoV_2.reference.fasta
   reference_gff="$reference_dir"/SARS_CoV_2.reference.gff3
-  reference_acc=MN908947.3
+  reference_accessions=MN908947.3
 
   # ARTIC V4.1 primers
   if [[ $protocol == *ARTICv4.1* ]]; then
@@ -484,7 +526,15 @@ run_cmd "samtools mpileup -A -d 50000 -B -Q 0 --reference $reference_fasta $bam_
 
 # iVar consensus calling
 print_log "\n[ Calling consensus with ivar ]"
-run_ivar_cmd "ivar consensus -m $min_coverage -t $min_frequency -p $sample.consensus -n N < $mpileup_file >> $log "
+for accession in "${reference_accessions[@]}"; do
+  print_log "Calling consensus for accession $accession"
+  accession_mpilup_file="$sample""$suffix"_"$accession".vcf
+  grep "$accession" "$mpileup_file" > "$accession_mpilup_file"
+  run_ivar_cmd "ivar consensus -m $min_coverage -t $min_frequency -p $sample.$accession.consensus -n N < $accession_mpilup_file >> $log "
+  rm "$accession_mpilup_file"
+done
+cat "$sample".*.consensus.fa > "$sample".consensus.fa
+
 consensus_stats="$sample".consensus.stats.txt
 run_cmd "stats.sh in=$sample.consensus.fa out=$consensus_stats format=2 overwrite=t"
 
@@ -496,30 +546,10 @@ ivar_snv_file="$ivar_snv_prefix".tsv
 ivar_vcf_file="$ivar_snv_prefix".vcf
 run_ivar_cmd "ivar variants -m $min_coverage -t $min_frequency -p $ivar_snv_prefix -r $reference_fasta -g $reference_gff < $mpileup_file >> $log "
 
-# Wait for ivar consensus and snv calls to be done (run in background)
-#sleep_count=0
-#until [[ -f consensus.done && -f ivar_snv.done ]]
-#do
-#  sleep 1
-#  let "sleep_count+=1"
-#  # Every 5 minutes report status
-#  if (( "$sleep_count" % 300 == 0 )); then
-#    print_log "Waiting on ivar consensus and snv calling."
-#    run_cmd "ls -l $ivar_snv_file $sample.consensus.fa"
-#  fi
-#  if [[ "$sleep_count" -eq 1800 ]]; then
-#    print_log "Waited for 30 minutes, exiting"
-#    run_cmd "ls -l $ivar_snv_file $sample.consensus.fa"
-#    exit 1
-#  fi
-#done
-
-
 snv_passed="$ivar_snv_prefix".pass.tsv
 run_cmd "head -n 1 $ivar_snv_file > $snv_passed"
 run_cmd "grep 'TRUE' $ivar_snv_file >> $snv_passed && sed -i 's/^/$sample\t/' $snv_passed" "continue"
 run_cmd "python /usr/local/bin/VAIW/ivar_variants_to_vcf.py --pass_only $ivar_snv_file $ivar_vcf_file" "continue"
-
 
 # Parsing sample statistics for summarystats.tsv
 print_log "\n[ Generating summarystats file ]"
@@ -542,7 +572,6 @@ run_cmd "python /usr/local/bin/VAIW/ivar_variants_to_vcf.py --pass_only $ivar_al
 #gzip mpileup_file to reduce file size
 run_cmd "gzip -f $mpileup_file" "continue"
 
-
 # lowfreq
 print_log "\n[ Calling low frequency variants with lofreq ]"
 suffix="$suffix"_lofreq_indelqual
@@ -555,43 +584,48 @@ run_cmd "samtools index -@ $threads $bam_out"
 run_lofreq_cmd "lofreq call-parallel --force-overwrite --min-cov $lf_min_coverage --pp-threads $threads --ref $reference_fasta --call-indels --out $lofreq_vcf_file $bam_out"
 run_lofreq_cmd "lofreq filter --in $lofreq_vcf_file --out $lofreq_filtered_vcf_file --af-min $lf_min_frequency"
 
+# Only run comparison when not using user provided reference
+# SnpEff has a built in database and is not able to be generated on the fly
+if [[ $user_reference == 0 ]]; then
+  # snpEff all variants
+  print_log "\n[ Converting ivar low frequency SNVs from nt to aa using snpeff ]"
+  snpeff_allvariants_prefix="$sample"_snpeff_allvariants
+  snpeff_allvariants_vcf_file="$snpeff_allvariants_prefix".vcf
+  snpeff_allvariants_html_stats="$snpeff_allvariants_prefix"_stats.html
+  snpeff_allvariants_csv_stats="$snpeff_allvariants_prefix"_stats.csv
+  cat "" > "$snpeff_allvariants_vcf_file"
+  for accession in "${reference_accessions[@]}"; do
+    run_cmd "snpEff eff -csvStats $snpeff_allvariants_csv_stats -htmlStats $snpeff_allvariants_html_stats $accession $ivar_allvariants_vcf_file > $snpeff_allvariants_vcf_file"
+  done
 
-# snpEff all variants
-print_log "\n[ Converting ivar low frequency SNVs from nt to aa using snpeff ]"
-snpeff_allvariants_prefix="$sample"_snpeff_allvariants
-snpeff_allvariants_vcf_file="$snpeff_allvariants_prefix".vcf
-snpeff_allvariants_html_stats="$snpeff_allvariants_prefix"_stats.html
-snpeff_allvariants_csv_stats="$snpeff_allvariants_prefix"_stats.csv
-run_cmd "snpEff eff -csvStats $snpeff_allvariants_csv_stats -htmlStats $snpeff_allvariants_html_stats $reference_acc $ivar_allvariants_vcf_file > $snpeff_allvariants_vcf_file"
+  # snpEff on lowfreq
+  print_log "\n[ Converting lofreq low frequency SNVs from nt to aa using snpeff ]"
+  snpeff_lofreq_prefix="$sample"_snpeff_lofreq
+  snpeff_lofreq_vcf_file="$snpeff_lofreq_prefix".vcf
+  snpeff_lofreq_html_stats="$snpeff_lofreq_prefix"_stats.html
+  snpeff_lofreq_csv_stats="$snpeff_lofreq_prefix"_stats.csv
+  cat "" > "$snpeff_lofreq_vcf_file"
+  for accession in "${reference_accessions[@]}"; do
+    run_cmd "snpEff eff -csvStats $snpeff_lofreq_csv_stats -htmlStats $snpeff_lofreq_html_stats $accession $lofreq_filtered_vcf_file >> $snpeff_lofreq_vcf_file"
+  done
+  # running vcf comparisons
+  print_log "\n[ Comparing low frequency variant calls ]"
+  vdir=vcf_comparison_dir
 
+  run_cmd "bgzip -f '$sample'_snpeff_lofreq.vcf"
+  run_cmd "bgzip -f '$sample'_snpeff_allvariants.vcf"
+  run_cmd "bcftools index '$sample'_snpeff_lofreq.vcf.gz"
+  run_cmd "bcftools index '$sample'_snpeff_allvariants.vcf.gz"
+  run_cmd "bcftools isec -c none -p ${vdir} '$sample'_snpeff_lofreq.vcf.gz '$sample'_snpeff_allvariants.vcf.gz"
+  run_cmd "bcftools query -f '%CHROM\t%POS\t%REF\t%ALT\t%DP\t%AF\t%QUAL\t%DP4\t%ANN\n' ${vdir}/0002.vcf > ${vdir}/'$sample'_comparison_lofreq.tsv"
+  run_cmd "bcftools query -f '%CHROM\t%POS\t%REF\t%ALT[\t%REF_DP][\t%REF_QUAL][\t%ALT_DP][\t%ALT_QUAL][\t%ALT_FREQ][\t%ANN][\t%SAMPLE=%GT]\n' ${vdir}/0003.vcf > ${vdir}/'$sample'_comparison_iVar.tsv"
+  print_log "running awk"
+  awk -v sample="$sample" -i inplace -F'\t' -vOFS='\t' ' { gsub("," , "\t" , $8); gsub(",","\t",$9);gsub(",","\t",$10);gsub(",","\t",$11); print sample "\t" $0}' ${vdir}/"$sample"_comparison_lofreq.tsv
+  awk -v sample="$sample" -i inplace '{print sample "\t" $0}' ${vdir}/"$sample"_comparison_iVar.tsv
+  run_cmd "echo -e 'SAMPLE\tREF_GENOME\tPOS\tREF\tALT\tDP\tAF\tQUAL\tDP_REF_FW\tDP_REF_RV\tDP_ALT_FW\tDP_ALT_RV\tANN\tREF_GENOME\tPOS\tREF\tALT\tREF_DP\tREF_QUAL\tALT_DP\tALT_QUAL\tALT_FREQ\tANN\tSAMPLE' > ${vdir}/'$sample'_comparison_combined.tsv"
+  run_cmd "paste -d' ' ${vdir}/'$sample'_comparison_lofreq.tsv ${vdir}/'$sample'_comparison_iVar.tsv >> ${vdir}/'$sample'_comparison_combined.tsv"
+fi
 
-# snpEff on lowfreq
-print_log "\n[ Converting lofreq low frequency SNVs from nt to aa using snpeff ]"
-snpeff_lofreq_prefix="$sample"_snpeff_lofreq
-snpeff_lofreq_vcf_file="$snpeff_lofreq_prefix".vcf
-snpeff_lofreq_html_stats="$snpeff_lofreq_prefix"_stats.html
-snpeff_lofreq_csv_stats="$snpeff_lofreq_prefix"_stats.csv
-run_cmd "snpEff eff -csvStats $snpeff_lofreq_csv_stats -htmlStats $snpeff_lofreq_html_stats $reference_acc $lofreq_filtered_vcf_file > $snpeff_lofreq_vcf_file"
-
-# running vcf comparisons
-print_log "\n[ Comparing low frequency variant calls ]"
-vdir=vcf_comparison_dir
-
-run_cmd "bgzip -f '$sample'_snpeff_lofreq.vcf"
-run_cmd "bgzip -f '$sample'_snpeff_allvariants.vcf"
-run_cmd "bcftools index '$sample'_snpeff_lofreq.vcf.gz"
-run_cmd "bcftools index '$sample'_snpeff_allvariants.vcf.gz"
-run_cmd "bcftools isec -c none -p ${vdir} '$sample'_snpeff_lofreq.vcf.gz '$sample'_snpeff_allvariants.vcf.gz" 
-run_cmd "bcftools query -f '%CHROM\t%POS\t%REF\t%ALT\t%DP\t%AF\t%QUAL\t%DP4\t%ANN\n' ${vdir}/0002.vcf > ${vdir}/'$sample'_comparison_lofreq.tsv"
-run_cmd "bcftools query -f '%CHROM\t%POS\t%REF\t%ALT[\t%REF_DP][\t%REF_QUAL][\t%ALT_DP][\t%ALT_QUAL][\t%ALT_FREQ][\t%ANN][\t%SAMPLE=%GT]\n' ${vdir}/0003.vcf > ${vdir}/'$sample'_comparison_iVar.tsv"
-print_log "running awk"
-awk -v sample="$sample" -i inplace -F'\t' -vOFS='\t' ' { gsub("," , "\t" , $8); gsub(",","\t",$9);gsub(",","\t",$10);gsub(",","\t",$11); print sample "\t" $0}' ${vdir}/"$sample"_comparison_lofreq.tsv 
-awk -v sample="$sample" -i inplace '{print sample "\t" $0}' ${vdir}/"$sample"_comparison_iVar.tsv 
-run_cmd "echo -e 'SAMPLE\tREF_GENOME\tPOS\tREF\tALT\tDP\tAF\tQUAL\tDP_REF_FW\tDP_REF_RV\tDP_ALT_FW\tDP_ALT_RV\tANN\tREF_GENOME\tPOS\tREF\tALT\tREF_DP\tREF_QUAL\tALT_DP\tALT_QUAL\tALT_FREQ\tANN\tSAMPLE' > ${vdir}/'$sample'_comparison_combined.tsv"
-run_cmd "paste -d' ' ${vdir}/'$sample'_comparison_lofreq.tsv ${vdir}/'$sample'_comparison_iVar.tsv >> ${vdir}/'$sample'_comparison_combined.tsv"
-
-
-#run_cmd "/usr/local/bin/VAIW/vcf_comparison.sh $sample"
 
 
 print_log "\n[ Done processing $sample ]"

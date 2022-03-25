@@ -1,0 +1,59 @@
+##sequence-region CY009628.1 1 1749
+##species https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=370120
+CY009628.1	Genbank	region	1	1749	.	+	.	ID=CY009628.1:1..1749;Dbxref=taxon:370120;Name=4;collection-date=1931;gbkey=Src;lab-host=Egg passage(s);mol_type=viral cRNA;nat-host=Swine;segment=4;serotype=H1N1;strain=A/swine/1931
+CY009628.1	Genbank	gene	20	1720	.	+	.	ID=gene-HA;Name=HA;gbkey=Gene;gene=HA;gene_biotype=protein_coding
+CY009628.1	Genbank	CDS	20	1720	.	+	0	ID=cds-ABD79255.1;Parent=gene-HA;Dbxref=NCBI_GP:ABD79255.1;Name=ABD79255.1;gbkey=CDS;gene=HA;product=hemagglutinin;protein_id=ABD79255.1
+CY009628.1	Genbank	signal_peptide_region_of_CDS	20	70	.	+	.	ID=id-ABD79255.1:1..17;Parent=cds-ABD79255.1;gbkey=Prot
+CY009628.1	Genbank	mature_protein_region_of_CDS	71	1051	.	+	.	ID=id-ABD79255.1:18..344;Parent=cds-ABD79255.1;gbkey=Prot;product=HA1
+CY009628.1	Genbank	mature_protein_region_of_CDS	1052	1717	.	+	.	ID=id-ABD79255.1:345..566;Parent=cds-ABD79255.1;gbkey=Prot;product=HA2
+
+##sequence-region CY009629.1 1 1000
+##species https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=370120
+CY009629.1	Genbank	region	1	1000	.	+	.	ID=CY009629.1:1..1000;Dbxref=taxon:370120;Name=7;collection-date=1931;gbkey=Src;lab-host=Egg passage(s);mol_type=viral cRNA;nat-host=Swine;segment=7;serotype=H1N1;strain=A/swine/1931
+CY009629.1	Genbank	gene	15	996	.	+	.	ID=gene-M2;Name=M2;gbkey=Gene;gene=M2;gene_biotype=protein_coding
+CY009629.1	Genbank	CDS	15	40	.	+	0	ID=cds-ABD79257.1;Parent=gene-M2;Dbxref=NCBI_GP:ABD79257.1;Name=ABD79257.1;gbkey=CDS;gene=M2;product=matrix protein 2;protein_id=ABD79257.1
+CY009629.1	Genbank	CDS	729	996	.	+	1	ID=cds-ABD79257.1;Parent=gene-M2;Dbxref=NCBI_GP:ABD79257.1;Name=ABD79257.1;gbkey=CDS;gene=M2;product=matrix protein 2;protein_id=ABD79257.1
+CY009629.1	Genbank	gene	15	773	.	+	.	ID=gene-M1;Name=M1;gbkey=Gene;gene=M1;gene_biotype=protein_coding
+CY009629.1	Genbank	CDS	15	773	.	+	0	ID=cds-ABD79256.1;Parent=gene-M1;Dbxref=NCBI_GP:ABD79256.1;Name=ABD79256.1;gbkey=CDS;gene=M1;product=matrix protein 1;protein_id=ABD79256.1
+
+##sequence-region CY009630.1 1 1432
+##species https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=370120
+CY009630.1	Genbank	region	1	1432	.	+	.	ID=CY009630.1:1..1432;Dbxref=taxon:370120;Name=6;collection-date=1931;gbkey=Src;lab-host=Egg passage(s);mol_type=viral cRNA;nat-host=Swine;segment=6;serotype=H1N1;strain=A/swine/1931
+CY009630.1	Genbank	gene	10	1419	.	+	.	ID=gene-NA;Name=NA;gbkey=Gene;gene=NA;gene_biotype=protein_coding
+CY009630.1	Genbank	CDS	10	1419	.	+	0	ID=cds-ABD79258.1;Parent=gene-NA;Dbxref=NCBI_GP:ABD79258.1;Name=ABD79258.1;gbkey=CDS;gene=NA;product=neuraminidase;protein_id=ABD79258.1
+
+##sequence-region CY009631.1 1 1536
+##species https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=370120
+CY009631.1	Genbank	region	1	1536	.	+	.	ID=CY009631.1:1..1536;Dbxref=taxon:370120;Name=5;collection-date=1931;gbkey=Src;lab-host=Egg passage(s);mol_type=viral cRNA;nat-host=Swine;segment=5;serotype=H1N1;strain=A/swine/1931
+CY009631.1	Genbank	gene	33	1529	.	+	.	ID=gene-NP;Name=NP;gbkey=Gene;gene=NP;gene_biotype=protein_coding
+CY009631.1	Genbank	CDS	33	1529	.	+	0	ID=cds-ABD79259.1;Parent=gene-NP;Dbxref=NCBI_GP:ABD79259.1;Name=ABD79259.1;gbkey=CDS;gene=NP;product=nucleocapsid protein;protein_id=ABD79259.1
+
+##sequence-region CY009632.1 1 861
+##species https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=370120
+CY009632.1	Genbank	region	1	861	.	+	.	ID=CY009632.1:1..861;Dbxref=taxon:370120;Name=8;collection-date=1931;gbkey=Src;lab-host=Egg passage(s);mol_type=viral cRNA;nat-host=Swine;segment=8;serotype=H1N1;strain=A/swine/1931
+CY009632.1	Genbank	gene	14	851	.	+	.	ID=gene-NS2;Name=NS2;gbkey=Gene;gene=NS2;gene_biotype=protein_coding
+CY009632.1	Genbank	CDS	14	43	.	+	0	ID=cds-ABD79261.1;Parent=gene-NS2;Dbxref=NCBI_GP:ABD79261.1;Name=ABD79261.1;gbkey=CDS;gene=NS2;product=nonstructural protein 2;protein_id=ABD79261.1
+CY009632.1	Genbank	CDS	516	851	.	+	0	ID=cds-ABD79261.1;Parent=gene-NS2;Dbxref=NCBI_GP:ABD79261.1;Name=ABD79261.1;gbkey=CDS;gene=NS2;product=nonstructural protein 2;protein_id=ABD79261.1
+CY009632.1	Genbank	gene	14	706	.	+	.	ID=gene-NS1;Name=NS1;gbkey=Gene;gene=NS1;gene_biotype=protein_coding
+CY009632.1	Genbank	CDS	14	706	.	+	0	ID=cds-ABD79260.1;Parent=gene-NS1;Dbxref=NCBI_GP:ABD79260.1;Name=ABD79260.1;gbkey=CDS;gene=NS1;product=nonstructural protein 1;protein_id=ABD79260.1
+
+##sequence-region CY009633.1 1 2201
+##species https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=370120
+CY009633.1	Genbank	region	1	2201	.	+	.	ID=CY009633.1:1..2201;Dbxref=taxon:370120;Name=3;collection-date=1931;gbkey=Src;lab-host=Egg passage(s);mol_type=viral cRNA;nat-host=Swine;segment=3;serotype=H1N1;strain=A/swine/1931
+CY009633.1	Genbank	gene	9	2159	.	+	.	ID=gene-PA;Name=PA;gbkey=Gene;gene=PA;gene_biotype=protein_coding
+CY009633.1	Genbank	CDS	9	2159	.	+	0	ID=cds-ABD79262.1;Parent=gene-PA;Dbxref=NCBI_GP:ABD79262.1;Name=ABD79262.1;gbkey=CDS;gene=PA;product=polymerase PA;protein_id=ABD79262.1
+
+##sequence-region CY009634.1 1 2302
+##species https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=370120
+CY009634.1	Genbank	region	1	2302	.	+	.	ID=CY009634.1:1..2302;Dbxref=taxon:370120;Name=2;collection-date=1931;gbkey=Src;lab-host=Egg passage(s);mol_type=viral cRNA;nat-host=Swine;segment=2;serotype=H1N1;strain=A/swine/1931
+CY009634.1	Genbank	gene	3	2276	.	+	.	ID=gene-PB1;Name=PB1;gbkey=Gene;gene=PB1;gene_biotype=protein_coding
+CY009634.1	Genbank	CDS	3	2276	.	+	0	ID=cds-ABD79263.1;Parent=gene-PB1;Dbxref=NCBI_GP:ABD79263.1;Name=ABD79263.1;gbkey=CDS;gene=PB1;product=polymerase PB1;protein_id=ABD79263.1
+CY009634.1	Genbank	gene	97	402	.	+	.	ID=gene-PB1-F2;Name=PB1-F2;gbkey=Gene;gene=PB1-F2;gene_biotype=other
+CY009634.1	Genbank	sequence_feature	97	402	.	+	.	ID=id-PB1-F2;Note=nonfunctional PB1-F2 protein due to mutation;gbkey=misc_feature;gene=PB1-F2
+
+##sequence-region CY009635.1 1 2313
+##species https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=370120
+CY009635.1	Genbank	region	1	2313	.	+	.	ID=CY009635.1:1..2313;Dbxref=taxon:370120;Name=1;collection-date=1931;gbkey=Src;lab-host=Egg passage(s);mol_type=viral cRNA;nat-host=Swine;segment=1;serotype=H1N1;strain=A/swine/1931
+CY009635.1	Genbank	gene	16	2295	.	+	.	ID=gene-PB2;Name=PB2;gbkey=Gene;gene=PB2;gene_biotype=protein_coding
+CY009635.1	Genbank	CDS	16	2295	.	+	0	ID=cds-ABD79264.1;Parent=gene-PB2;Dbxref=NCBI_GP:ABD79264.1;Name=ABD79264.1;gbkey=CDS;gene=PB2;product=polymerase PB2;protein_id=ABD79264.1
+
