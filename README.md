@@ -106,7 +106,7 @@ read1=<read 1 name>
 read2=<read 2 name>
 ```
 
-**Note sample is used as the prefix on files generate**
+**Note sample is used as the prefix on files generated**
 
 ### Set the protocol type (ARTICv4.1, ARTICv4, ARTIC, QIAseq_DIRECT, or YouSeq) and reference ("SARS-CoV-2")
 ```
