@@ -120,10 +120,10 @@ end_type=<end_type>
 ```
 
 # Contact:
-Logan Voegtly M.Bin.*: ``` logan.j.voegtly.ctr[at]mail.mil```
+Regina Z. Cer MSc.*: ``` regina.z.cer.civ[at]health.mil```
 
 
-\* Leidos Inc, Genomics and Bioinformatics Department, Biological Defense Research Directorate, Naval Medical Research Center
+\* Genomics and Bioinformatics Department, Biological Defense Research Directorate, Naval Medical Research Command
 
 ### Citation:
 Parts of this workflow were adapted from [Utah DoH ARTIC/Illumina Bioinformatic Workflow](https://github.com/CDCgov/SARS-CoV-2_Sequencing/tree/master/protocols/BFX-UT_ARTIC_Illumina) workflow and the [ARTIC workflow](https://artic.network/ncov-2019/ncov2019-bioinformatics-sop.html)
